@@ -1,9 +1,9 @@
 
 
-- ```
-    class sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights=’uniform’, algorithm=’auto’, leaf_size=30, p=2, metric=’minkowski’, metric_params=None, n_jobs=None, **kwargs)
+ ```
+ class sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights=’uniform’, algorithm=’auto’, leaf_size=30, p=2, metric=’minkowski’, metric_params=None, n_jobs=None, **kwargs)
                                            
-    ```
+ ```
 
 - n_neighbors：聚类个数。
 - weights（权重）：决定算法如何分配权重，默认为uniform，表示远近权重都一样。参数选项如下：
