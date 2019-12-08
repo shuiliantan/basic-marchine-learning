@@ -10,8 +10,7 @@
 
 对a和b求偏导，
 
-![d0827731-a42f-4c35-8ff7-10c5d8bd9442](/Users/shuiliantan/Library/Containers/com.tencent.WeWorkMac/Data/Library/Application Support/WXWork/Data/1688850523200633/Cache/Image/2019-12/d0827731-a42f-4c35-8ff7-10c5d8bd9442.jpg)
-
+![linear](../common/linear_regression.jpg)
 ### 梯度下降求解
 
 梯度下降就是按照梯度的方向改变$$\theta$$的值，因为梯度的方向就是使损失函数变化最快的方向
@@ -24,7 +23,9 @@ $$\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}L$$
 
 ![img](https://images0.cnblogs.com/blog/310680/201409/021653297666228.jpg)
 
-于是![img](https://images0.cnblogs.com/blog/310680/201409/021654119532239.jpg)
+于是
+
+![img](https://images0.cnblogs.com/blog/310680/201409/021654119532239.jpg)
 
 随机梯度下降**
 
