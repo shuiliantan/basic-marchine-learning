@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="欢迎来到shuilian的博客主页呀">
+  <meta name="description" content="异常值替换方法说明：对某个字段（如value）的异常值（如出现次数太少、太稀疏的值）， 按照一定方式进行替换。 参数 异常值定义：string类型，表示检测数据中异常值的方法，默认值是“箱线图”。可选值有”常数”、”N倍标准差”、”箱线图”，每个值对应的详情如下:     异常值定义 异常值定义英文名 说明 子参数    常数 constant 指定某个常数为异常值 常数值：float类型，默认值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎你呀">
-<meta property="og:url" content="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/replace_outlier/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欢迎来到shuilian的博客主页呀">
+<meta property="og:description" content="异常值替换方法说明：对某个字段（如value）的异常值（如出现次数太少、太稀疏的值）， 按照一定方式进行替换。 参数 异常值定义：string类型，表示检测数据中异常值的方法，默认值是“箱线图”。可选值有”常数”、”N倍标准差”、”箱线图”，每个值对应的详情如下:     异常值定义 异常值定义英文名 说明 子参数    常数 constant 指定某个常数为异常值 常数值：float类型，默认值">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-26T10:21:56.000Z">
-<meta property="article:modified_time" content="2021-02-26T10:26:59.497Z">
+<meta property="article:published_time" content="2021-02-26T13:17:28.137Z">
+<meta property="article:modified_time" content="2021-02-26T13:17:28.138Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="欢迎">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/">
+<link rel="canonical" href="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/replace_outlier/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>欢迎你呀 | Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -151,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/replace_outlier/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          欢迎你呀
+          
         </h1>
 
         <div class="post-meta">
@@ -173,9 +172,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-26 18:21:56 / Modified: 18:26:59" itemprop="dateCreated datePublished" datetime="2021-02-26T18:21:56+08:00">2021-02-26</time>
+              <time title="Created: 2021-02-26 21:17:28" itemprop="dateCreated datePublished" datetime="2021-02-26T21:17:28+08:00">2021-02-26</time>
             </span>
 
           
@@ -189,7 +187,105 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>欢迎来到shuilian的博客主页呀</p>
+        <h4 id="异常值替换"><a href="#异常值替换" class="headerlink" title="异常值替换"></a>异常值替换</h4><p>方法说明：对某个字段（如value）的异常值（如出现次数太少、太稀疏的值）， 按照一定方式进行替换。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>异常值定义</strong>：string类型，表示检测数据中异常值的方法，默认值是“箱线图”。可选值有”常数”、”N倍标准差”、”箱线图”，每个值对应的详情如下:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">异常值定义</th>
+<th align="left">异常值定义英文名</th>
+<th align="left">说明</th>
+<th align="left">子参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">常数</td>
+<td align="left">constant</td>
+<td align="left">指定某个常数为异常值</td>
+<td align="left">常数值：float类型，默认值是0。表示输入数据中等于这个值的数据为异常值。</td>
+</tr>
+<tr>
+<td align="left">N倍标准差</td>
+<td align="left">N-sigma</td>
+<td align="left">超过N倍标准差的为异常值</td>
+<td align="left">标准差倍数：float类型，大于0，默认值是5.0。当标准差倍数为N时，输入数据中，超过样本均值 +N * 标准差，或者小于样本均值- N * 标准差的数据为异常值。</td>
+</tr>
+<tr>
+<td align="left">箱线图</td>
+<td align="left">boxplot</td>
+<td align="left">利用箱线图的四分位距（IQR）对异常值进行检测</td>
+<td align="left">IQR倍数：float类型，表示四分位距的倍数，默认值是3。例如，IQR倍数=3表示，输入数据中，超过上四分位+3 * IQR，或者小于下四分位-3*IQR的数据为异常值。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>替换方法</strong>：string类型，表示对异常值进行替换的方法，默认值是“上一个时刻的值”。可选值有”常数”、”上一个时刻的值”、”下一个时刻的值”、”最近一个时刻的值”、”线性插值”、”样条插值”、”Hermite插值”、”滑动均值”、”滑动中位数”，每个值对应的说明如下:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">替换方法</th>
+<th align="left">填充替换英文名</th>
+<th align="left">说明</th>
+<th align="left">子参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">常数</td>
+<td align="left">constant</td>
+<td align="left">用户可指定填充的数值</td>
+<td align="left">常数值：float类型，默认值是-1。表示将异常的数据替换成该常数值。</td>
+</tr>
+<tr>
+<td align="left">上一个时刻的值</td>
+<td align="left">previous</td>
+<td align="left">上一个非缺失时刻的值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">下一个时刻的值</td>
+<td align="left">next</td>
+<td align="left">下一个非缺失时刻的值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">最近一个时刻的值</td>
+<td align="left">nearest</td>
+<td align="left">距离最近的非缺失值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">线性插值</td>
+<td align="left">linear</td>
+<td align="left">相邻非缺失值的线性插值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">样条插值</td>
+<td align="left">spline</td>
+<td align="left">三次样条插值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">Hermite插值</td>
+<td align="left">pchip</td>
+<td align="left">分段三次Hermite插值多项式</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">滑动均值</td>
+<td align="left">movemean</td>
+<td align="left">窗口长度为window的移动均值，用户可指定窗口长度</td>
+<td align="left">窗口长度: int类型，默认值是10。表示滑动窗口中样本点的个数。</td>
+</tr>
+<tr>
+<td align="left">滑动中位数</td>
+<td align="left">movemedian</td>
+<td align="left">窗口长度为window的移动中位数，用户可指定窗口长度</td>
+<td align="left">窗口长度: int类型，默认值是10。表示滑动窗口中样本点的个数。</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -198,18 +294,18 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%AC%A2%E8%BF%8E/" rel="tag"># 欢迎</a>
-          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2021/02/26/shuiliantan.github.io/Algorithm/DecisionTree/" rel="next" title="">
+    <a href="/2021/02/26/shuiliantan.github.io/data_preprocessing/coding/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/data_preprocessing/fillna/" rel="next" title="">
        <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -270,6 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%80%BC%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">异常值替换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number"></span> <span class="nav-text">参数</span></a></div>
       </div>
       <!--/noindex-->
 

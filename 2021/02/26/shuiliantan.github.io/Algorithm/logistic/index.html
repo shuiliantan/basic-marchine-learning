@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="逻辑回归线性回归 to 逻辑回归本质：逻辑回归的本质就是在线性回归的基础上做了一个非线性的映射（变换），使得算法具有非线性的属性。Q1:为什么要加这个非线性的变换呢？答：因为对于线性回归，预测的变量是连续型的变量，不适合于分类型的离散变量（eg y&#x3D;0或者y&#x3D;1）。原因在于线性回归的定义可能让y大于0或者小于1，现在我们需要让0&lt;&#x3D;y&lt;&#x3D;1。就用sigmoid函数做映射函数。sigmo">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/02/index.html">
+<meta property="og:url" content="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/logistic/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="逻辑回归线性回归 to 逻辑回归本质：逻辑回归的本质就是在线性回归的基础上做了一个非线性的映射（变换），使得算法具有非线性的属性。Q1:为什么要加这个非线性的变换呢？答：因为对于线性回归，预测的变量是连续型的变量，不适合于分类型的离散变量（eg y&#x3D;0或者y&#x3D;1）。原因在于线性回归的定义可能让y大于0或者小于1，现在我们需要让0&lt;&#x3D;y&lt;&#x3D;1。就用sigmoid函数做映射函数。sigmo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-26T13:17:28.128Z">
+<meta property="article:modified_time" content="2021-02-26T13:17:28.128Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2021/02/">
+<link rel="canonical" href="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/logistic/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -139,234 +143,108 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 13 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/logistic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-26 21:17:28" itemprop="dateCreated datePublished" datetime="2021-02-26T21:17:28+08:00">2021-02-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/knn/principle/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/index/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/evaluate/classify/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/fillna/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/replace_outlier/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/coding/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/logistic/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/linear%20regression/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/README/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="线性回归-to-逻辑回归"><a href="#线性回归-to-逻辑回归" class="headerlink" title="线性回归 to 逻辑回归"></a>线性回归 to 逻辑回归</h3><p><strong>本质</strong>：逻辑回归的本质就是在线性回归的基础上做了一个非线性的映射（变换），使得算法具有非线性的属性。<br>Q1:为什么要加这个非线性的变换呢？<br>答：因为对于线性回归，预测的变量是连续型的变量，不适合于分类型的离散变量（eg y=0或者y=1）。原因在于线性回归的定义可能让y大于0或者小于1，现在我们需要让0&lt;=y&lt;=1。就用sigmoid函数做映射函数。sigmod函数在负无穷大时，趋向于0；正无穷大时，趋向于1。</p>
+<p>为什么不采用分段函数而要采用sigmoid函数呢？因为sigmoid函数是连续的，阶梯函数是不连续且不可微的</p>
+<h3 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h3><p>$$h_\theta(x) = \frac{1}{1+e^{-\theta^T x}}$$</p>
+<ul>
+<li>当$$h_\theta(x)\geq0.5$$时，预测y=1</li>
+<li>当$$h_\theta(x)&lt;0.5$$时，预测y=0</li>
+</ul>
+<p>等同于</p>
+<ul>
+<li>当$$\theta^T\ge0$$时，预测y=1</li>
+<li>当$$\theta^T&lt;0$$时，预测y=0</li>
+</ul>
+<p>假设对于2个特征变量的函数，$$h_\theta(x) = \frac{1}{1+e^-{(\theta_0+\theta_1x_1+\theta_2x_2)}}$$，最后求解为</p>
+<p>$$\begin{cases} \ \theta_0=-3\ \theta_1=1\\theta_2=1\end{cases}$$</p>
+<p>则当$$\theta_0+\theta_1x_1+\theta_2x_2\ge0$$时，y=1;当$$\theta_0+\theta_1x_1+\theta_2x_2&lt;0$$时，y=0;那么决策边界就是$$\theta_0+\theta_1x_1+\theta_2x_2=0$$这条线；</p>
+<p>另外一种情况就是可能 $$-1+x_1^2+x_2^2=0$$也是决策边界，代表一个圆；</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>Q2: 为什么不用线性回归的损失函数作为逻辑回归的损失函数呢？</p>
+<p>答：继续使用线性回归的损失函数，会导致代价函数变成一个非凸函数。这就导致会有很多局部最小值，用梯度下降法很难保证其收敛到全局最小值。</p>
+<p>Q3：损失函数特点？</p>
+<ul>
+<li>当真实类别y=1时，异常概率越大，损失越小</li>
+<li>当真实类别y=0时，异常概率越小，损失越大</li>
+</ul>
+<p>$$J= \begin{cases} -log(p)&amp; \text{y=1}\ -log(1-p)&amp; \text{y=0} \end{cases}$$</p>
+<p>通过控制系数的方法，将两个方程联系起来，可以得到，单个样本的损失函数为：</p>
+<p>$$J = -log(p)-(1-p)log(1-p)$$</p>
+<p>全部样本的损失可以取平均值</p>
+<p>$$J(\theta) = -\frac{1}{m}\sum_{i=1}^m y^ilog(p^i)+(1-y^i)log(1-p^i)$$</p>
+<p>Q4:通过最大似然函数求解损失函数</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/Algorithm/linear%20regression/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/data_preprocessing/coding/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/02/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/02/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -418,6 +296,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-to-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.1.</span> <span class="nav-text">线性回归 to 逻辑回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C"><span class="nav-number">1.2.</span> <span class="nav-text">决策边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">损失函数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

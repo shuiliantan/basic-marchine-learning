@@ -20,15 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="归一化方法说明：把某个字段（如value），通过某种方法映射到一定区间内（通常是[-1, 1]或[0, 1]）。常用于数据预处理，可以提升机器学习的训练效率。 参数 归一化方法：string类型，可选值为MinMaxScaler、StandardScaler、RobustScaler，具体含义如下：     归一化方法 归一化方法中文名 描述    MinMaxScaler 最大最小归一化 对特征">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/02/index.html">
+<meta property="og:url" content="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="归一化方法说明：把某个字段（如value），通过某种方法映射到一定区间内（通常是[-1, 1]或[0, 1]）。常用于数据预处理，可以提升机器学习的训练效率。 参数 归一化方法：string类型，可选值为MinMaxScaler、StandardScaler、RobustScaler，具体含义如下：     归一化方法 归一化方法中文名 描述    MinMaxScaler 最大最小归一化 对特征">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://static.bkdata.oa.com/algorithm/dataprepare/v2/standard_explain.png">
+<meta property="article:published_time" content="2021-02-26T13:17:28.138Z">
+<meta property="article:modified_time" content="2021-02-26T13:17:28.138Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://static.bkdata.oa.com/algorithm/dataprepare/v2/standard_explain.png">
 
-<link rel="canonical" href="http://example.com/archives/2021/02/">
+<link rel="canonical" href="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/">
 
 
 <script id="page-configurations">
@@ -36,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -139,234 +145,118 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 13 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-26 21:17:28" itemprop="dateCreated datePublished" datetime="2021-02-26T21:17:28+08:00">2021-02-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/knn/principle/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/index/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/evaluate/classify/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/fillna/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/replace_outlier/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/data_preprocessing/coding/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/logistic/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/Algorithm/linear%20regression/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-26T21:17:28+08:00"
-              content="2021-02-26">
-          02-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/26/shuiliantan.github.io/README/" itemprop="url">
-            <span itemprop="name">Untitled</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><p>方法说明：把某个字段（如value），通过某种方法映射到一定区间内（通常是[-1, 1]或[0, 1]）。常用于数据预处理，可以提升机器学习的训练效率。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>归一化方法</strong>：string类型，可选值为MinMaxScaler、StandardScaler、RobustScaler，具体含义如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>归一化方法</th>
+<th>归一化方法中文名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MinMaxScaler</td>
+<td>最大最小归一化</td>
+<td>对特征进行缩放归一化，默认归一化后特征的数值范围在[0,1]之间。 计算公式为：(x-min)/(max-min)</td>
+</tr>
+<tr>
+<td>RobustScaler</td>
+<td>分位数归一化</td>
+<td>对特征进行缩放归一化，通过 Interquartile Range (IQR) 标准化数据，取四分之一和四分之三分位数为标准进行缩放。计算公式为：(x-中位数)/四分位距</td>
+</tr>
+<tr>
+<td>StandardScaler</td>
+<td>标准归一化</td>
+<td>标准归一化也叫z-score归一化，它将一列特征处理为符合标准正态分布（均值为0，标准差为1）。计算公式为：(x-Mean)/std</td>
+</tr>
+</tbody></table>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>一般而言，原始的训练数据中，每一维特征的来源以及度量单位不同，会造成特征的分布范围往往差异很大。当计算不同样本之间的距离时，取值范围大的特征会起到主导作用。对于基于相似度比较的机器学习方法(如最近邻分类器)，必须先对样本进行预处理，将各维度特征归一化到同一取值区间，并且消除不同特征之间的相关性，才能获得理想的结果。</p>
+<p>下图是使用标准归一化方法(StandardScaler)对二维数据进行归一化的例子：</p>
+<ul>
+<li><p>左图’origin_data’表示的是原始数据；</p>
+</li>
+<li><p>中图’zero-centered data’是原始数据减去均值后的数据，数据被移动到原点周围；</p>
+</li>
+<li><p>右图’normalized_data’将中图得到的数据除以标准差，得到标准化的数据，可以看出每个维度上的尺度是一致的（红色线段的长度表示尺度）。</p>
+</li>
+</ul>
+<p><img src="http://static.bkdata.oa.com/algorithm/dataprepare/v2/standard_explain.png" alt="image-20181211111029866"></p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/data_preprocessing/fillna/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/evaluate/classify/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/02/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/02/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -418,6 +308,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A"><span class="nav-number">3.</span> <span class="nav-text">解释</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

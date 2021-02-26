@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="欢迎来到shuilian的博客主页呀">
+  <meta name="description" content="混淆矩阵:对于二分类的分类问题, 我们可以根据样例将真实类别与预测类别的组合分为真正例(true positive),假正例(false positive),真反例(true negative), 假反例(false negative)四种情形.  假正例(FP, false positive)：被模型错误地预测为正类别的样本  假负例 (FN, false negative)：被模型错误地预测为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎你呀">
-<meta property="og:url" content="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/classify/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="欢迎来到shuilian的博客主页呀">
+<meta property="og:description" content="混淆矩阵:对于二分类的分类问题, 我们可以根据样例将真实类别与预测类别的组合分为真正例(true positive),假正例(false positive),真反例(true negative), 假反例(false negative)四种情形.  假正例(FP, false positive)：被模型错误地预测为正类别的样本  假负例 (FN, false negative)：被模型错误地预测为">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-26T10:21:56.000Z">
-<meta property="article:modified_time" content="2021-02-26T10:26:59.497Z">
+<meta property="og:image" content="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/common/confusion-matrix.jpeg">
+<meta property="og:image" content="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/common/roc.jpeg">
+<meta property="og:image" content="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/common/pr.jpg">
+<meta property="article:published_time" content="2021-02-26T13:17:28.138Z">
+<meta property="article:modified_time" content="2021-02-26T13:17:28.138Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="欢迎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/common/confusion-matrix.jpeg">
 
-<link rel="canonical" href="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/">
+<link rel="canonical" href="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/classify/">
 
 
 <script id="page-configurations">
@@ -46,7 +49,7 @@
   };
 </script>
 
-  <title>欢迎你呀 | Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -151,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/shuiliantan.github.io/evaluate/classify/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,7 +167,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          欢迎你呀
+          
         </h1>
 
         <div class="post-meta">
@@ -173,9 +176,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-26 18:21:56 / Modified: 18:26:59" itemprop="dateCreated datePublished" datetime="2021-02-26T18:21:56+08:00">2021-02-26</time>
+              <time title="Created: 2021-02-26 21:17:28" itemprop="dateCreated datePublished" datetime="2021-02-26T21:17:28+08:00">2021-02-26</time>
             </span>
 
           
@@ -189,7 +191,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>欢迎来到shuilian的博客主页呀</p>
+        <h3 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵:"></a>混淆矩阵:</h3><p>对于二分类的分类问题, 我们可以根据样例将真实类别与预测类别的组合分为真正例(true positive),假正例(false positive),真反例(true negative), 假反例(false negative)四种情形.</p>
+<ul>
+<li><p>假正例(FP, false positive)：被模型错误地预测为正类别的样本</p>
+</li>
+<li><p>假负例 (FN, false negative)：被模型错误地预测为正类别的样本</p>
+</li>
+<li><p>负例 (TN, true negative)：被模型正确地预测为负类别的样本</p>
+</li>
+<li><p>正例 (TP, true positive)：被模型正确地预测为正类别的样本</p>
+</li>
+</ul>
+<p><img src="../common/confusion-matrix.jpeg" alt="confusion matrix"></p>
+<p>根据混淆矩阵可以计算如下指标:</p>
+<p>tps和fps是阈值逆序排列后，不同阈值对应的tp和fp。tps[-1]为阈值为0时，所有的点都被预测为正咯，所以代表为真实的正例总数，fps[-1]为真实的反例总数</p>
+<p>fps = [0, 1, 1, 1, 2, 3, 4, 5, 6, 7]</p>
+<p>tps = [1, 1, 2, 3, 3, 3, 3, 3, 3, 3]</p>
+<p>thresholds = [0.42600526758001989, 0.42017521636505745, 0.41936155918127238, 0.39760831479768338, 0.38769987193780364, 0.3667541015524296, 0.33998332945141224, 0.33803961944475219, 0.32367439192936548, 0.31689620142873609]</p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线全称是‘受试者工作曲线’。ROC曲线越远离对角线，模型效果越好。如果要比较两个分类器的性能孰优孰劣，可以比较ROC曲线下的区域面积即为AUC值，AUC值越接近1模型的效果越好。</p>
+<p>ROC 曲线下面积是，对于随机选择的正类别样本确实为正类别（recall），以及随机选择的负类别样本为正类别(fpr)，分类器更确信前者的概率。</p>
+<p>纵轴：真正例率TPR=TP/（TP+FN）,也就是召回率Recall；</p>
+<p>横轴：假正例率FPR=FP/（FP+TN）。</p>
+<p><img src="../common/roc.jpeg" alt="roc"></p>
+<h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR图反应了分类器在不同阈值下识别正例的准确率和覆盖率之间的权衡。</p>
+<p>在一些应用中，对查全率和查准率的重视程度有所不同。推荐系统中，更希望推荐商品是用户感兴趣的，此时查准率更重要；逃犯信息检索中，更希望少漏掉逃犯，查全率更重要，可以通过加权计算F1值来比较性能。</p>
+<p>纵轴：查准率Precision=TP/（TP+FP），</p>
+<p>横轴：查全率Recall=TP/（TP+FN）。<br><img src="../common/pr.jpg" alt="p"></p>
+<h3 id="Lift-提升-曲线"><a href="#Lift-提升-曲线" class="headerlink" title="Lift(提升)曲线"></a>Lift(提升)曲线</h3><p>Lift 曲线是不同阈值下Lift和预测正例占比的轨迹。</p>
+<p>在使用模型进行预测之后，模型的查准率为precision=TP/（TP+FP），在不使用模型之前，模型的查准率为pre_precision=(TP+FN)/(TP+FP+FN+TN),所以在使用模型之后，模型的查准率提升至Lift值=precision/pre_precision.Lift（提升）曲线衡量的是，与不利用模型相比，模型的预测能力“变好”了多少。lift(提升指数)越大，模型的运行效果越好。一般lift(提升指数)&gt;1.</p>
+<p>纵轴:Lift值=precision/pre_precision,</p>
+<p>横轴：预测正例占比x=(TP+FP)/(TP+FP+FN+TN)</p>
+<h3 id="Gain曲线"><a href="#Gain曲线" class="headerlink" title="Gain曲线"></a>Gain曲线</h3><p>Gain增益图是描述整体精准率的指标.和Lift曲线在于纵轴刻度的不同。</p>
+<p>纵轴：Gain=precision=TP/（TP+FP）,</p>
+<p>横轴：预测正例占比x=(TP+FP)/(TP+FP+FN+TN)</p>
+<h3 id="K-S曲线"><a href="#K-S曲线" class="headerlink" title="K-S曲线"></a>K-S曲线</h3><p>KS曲线是正样本洛伦兹曲线和负样本洛伦兹曲线的差值曲线，KS曲线的最高点定义为KS值。</p>
+<p>KS是检验阳性与阴性分类区分能力的指标，主要是验证模型的区分能力</p>
+<p>纵轴：分别是TPR，FPR，与TPR与FPR的距离</p>
+<p>横轴：预测正例占比x(阈值)</p>
 
     </div>
 
@@ -198,18 +236,18 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%AC%A2%E8%BF%8E/" rel="tag"># 欢迎</a>
-          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2021/02/26/shuiliantan.github.io/Algorithm/DecisionTree/" rel="next" title="">
+    <a href="/2021/02/26/shuiliantan.github.io/data_preprocessing/standard/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/index/" rel="next" title="">
        <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -270,6 +308,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">混淆矩阵:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">ROC曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PR%E6%9B%B2%E7%BA%BF"><span class="nav-number">3.</span> <span class="nav-text">PR曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lift-%E6%8F%90%E5%8D%87-%E6%9B%B2%E7%BA%BF"><span class="nav-number">4.</span> <span class="nav-text">Lift(提升)曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gain%E6%9B%B2%E7%BA%BF"><span class="nav-number">5.</span> <span class="nav-text">Gain曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-S%E6%9B%B2%E7%BA%BF"><span class="nav-number">6.</span> <span class="nav-text">K-S曲线</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

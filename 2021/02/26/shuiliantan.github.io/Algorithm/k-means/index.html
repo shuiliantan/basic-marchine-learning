@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="K-means聚类原理对于给定的样本集，按照样本间的距离大小，将样本分为k个类。让簇内点的距离尽可能的小，簇间的距离尽可能远。 算法流程 12345选取k个点作为质心repeat	将每个点指派到最近的质心，形成k个簇	重新计算每个簇的质心util 簇不发生变化 或者达到迭代次数 损失函数最小化所有数据到聚类中心的欧式距离和的平均值，即 $$J&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^m(x_i">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:url" content="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/k-means/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="K-means聚类原理对于给定的样本集，按照样本间的距离大小，将样本分为k个类。让簇内点的距离尽可能的小，簇间的距离尽可能远。 算法流程 12345选取k个点作为质心repeat	将每个点指派到最近的质心，形成k个簇	重新计算每个簇的质心util 簇不发生变化 或者达到迭代次数 损失函数最小化所有数据到聚类中心的欧式距离和的平均值，即 $$J&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^m(x_i">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-26T13:17:28.127Z">
+<meta property="article:modified_time" content="2021-02-26T13:17:28.127Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/page/2/">
+<link rel="canonical" href="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/k-means/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -139,9 +143,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -157,10 +162,9 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/26/shuiliantan.github.io/Algorithm/k-means/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -183,7 +187,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>对于给定的样本集，按照样本间的距离大小，将样本分为k个类。让簇内点的距离尽可能的小，簇间的距离尽可能远。</p>
+        <h1 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>对于给定的样本集，按照样本间的距离大小，将样本分为k个类。让簇内点的距离尽可能的小，簇间的距离尽可能远。</p>
 <p><strong>算法流程</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">选取k个点作为质心</span><br><span class="line">repeat</span><br><span class="line">	将每个点指派到最近的质心，形成k个簇</span><br><span class="line">	重新计算每个簇的质心</span><br><span class="line">util 簇不发生变化 或者达到迭代次数</span><br></pre></td></tr></table></figure>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>最小化所有数据到聚类中心的欧式距离和的平均值，即</p>
@@ -223,158 +227,34 @@
 <li>需要归一化：需要将不同量纲的数据标准化</li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/shuiliantan.github.io/Algorithm/DecisionTree/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/26/shuiliantan.github.io/Algorithm/DecisionTree/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-26 21:17:28" itemprop="dateCreated datePublished" datetime="2021-02-26T21:17:28+08:00">2021-02-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><h4 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h4><p>决策树是一个有监督的算法，可用于分类和回归。它从目标变量中学习一系列的决策规则，来对未知数据进行预测。学习到的规则就是一颗决策树。</p>
-<h4 id="特征划分的规则"><a href="#特征划分的规则" class="headerlink" title="特征划分的规则"></a>特征划分的规则</h4><p>根据信息增、信息熵、gini系数去不断地寻找最优的特征，</p>
-<h4 id="ID3算法（信息增益）"><a href="#ID3算法（信息增益）" class="headerlink" title="ID3算法（信息增益）"></a>ID3算法（信息增益）</h4><p>定义：信息增益表示在得知特征X的信息下，使得类Y的不确定信息减少的程度。</p>
-<ul>
-<li><p>信息熵代表信息的不确定性。信息熵越大，代表越不确定；信息熵越小，确定性越高。</p>
-<p>$$H = -\sum_{i=1}^np_ilog(p_i)$$</p>
-</li>
-<li><p>条件熵$$H(Y|X)$$表示在得知随机变量X的前提下，随机变量Y的不确定性。条件信息熵越小，说明划分后的纯度越高。</p>
-<p>$$H(Y|X) = -\sum_{i=1}^mp_iH(Y|X=x_i)$$</p>
-</li>
-</ul>
-<p>信息增益是相对于特征而言的。信息增益的定义为：数据集D的信息熵和在知道特征A后D的条件信息熵之差。</p>
-<p>$$g(D,A) = H(D)-H(D|A) =H(D)-\sum_{i=1}^v\frac{D_v}{D}H(D_v) $$</p>
-<h4 id="C4-5算法（信息增益率）"><a href="#C4-5算法（信息增益率）" class="headerlink" title="C4.5算法（信息增益率）"></a>C4.5算法（信息增益率）</h4><p>因为信息熵倾向于选择分类属性越多的特征，因为越细的分类纯度越高。例如：对于唯一标识类的特征，划分后，信息熵为0，信息增益达到最大，但是这个对分类是没有用的，对于未知数据的泛化程度很低。所以需要对此加上一些惩罚。因此便有了信息增益。</p>
-<p>$$g_R(D,A) = g(D,A)/H(A)$$</p>
-<h4 id="CART-算法（gini系数-）"><a href="#CART-算法（gini系数-）" class="headerlink" title="CART 算法（gini系数 ）"></a>CART 算法（gini系数 ）</h4><p>gini系数表示随机选择一个样本被分错的概率</p>
-<p>$$Gini =\sum_{i=1} ^Kp_i(1-p_i)$$ = $$1-\sum_{i=1}^Kp_i^2$$</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/Algorithm/DecisionTree/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/shuiliantan.github.io/README/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/26/%E6%AC%A2%E8%BF%8Ewelcome/" class="post-title-link" itemprop="url">欢迎你呀</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-02-26 18:21:56 / Modified: 18:26:59" itemprop="dateCreated datePublished" datetime="2021-02-26T18:21:56+08:00">2021-02-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>欢迎来到shuilian的博客主页呀</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
 
 
 
@@ -426,6 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#K-means%E8%81%9A%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">K-means聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">收敛条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">超参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86"><span class="nav-number">1.1.4.</span> <span class="nav-text">评估标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E9%A1%B9"><span class="nav-number">1.1.5.</span> <span class="nav-text">算法使用注意项</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
