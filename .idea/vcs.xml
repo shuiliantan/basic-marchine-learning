@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Anomaly-Detection-with-K-means" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pyodd" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/next" vcs="Git" />
   </component>
 </project>
