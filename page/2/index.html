@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/page/2/index.html">
@@ -13,535 +27,1265 @@
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<link rel="canonical" href="http://example.com/page/2/">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  <title>Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-shuiliantan.github.io/ng/第二周/Multi-task learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/29/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Multi-task%20learning/" class="article-date">
-  <time class="dt-published" datetime="2020-05-29T02:01:32.867Z" itemprop="datePublished">2020-05-29</time>
-</a>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>多任务学习：用1个神经网络同时做多件事情</p>
-<p>例如：一张图片对应多个标签，</p>
 
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/29/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Multi-task%20learning/" data-id="cklm8jimn001359v38z4u8dl4" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
-</article>
-
-
-
   
-    <article id="post-shuiliantan.github.io/ng/第二周/Addressing data mismatch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/26/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Addressing%20data%20mismatch/" class="article-date">
-  <time class="dt-published" datetime="2020-05-26T02:08:17.162Z" itemprop="datePublished">2020-05-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/26/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Addressing%20data%20mismatch/" data-id="cklm8jikt000059v3auydgpcc" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/14/shuiliantan.github.io/Algorithm/LogisticRegression_/priciple/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/14/shuiliantan.github.io/Algorithm/LogisticRegression_/priciple/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
 
-  
-    <article id="post-shuiliantan.github.io/ng/第二周/Transfer learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/26/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Transfer%20learning/" class="article-date">
-  <time class="dt-published" datetime="2020-05-26T01:51:18.990Z" itemprop="datePublished">2020-05-26</time>
-</a>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-14 22:03:19" itemprop="dateCreated datePublished" datetime="2019-12-14T22:03:19+08:00">2019-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-12 21:12:53" itemprop="dateModified" datetime="2020-04-12T21:12:53+08:00">2020-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
-  </div>
-  <div class="article-inner">
     
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>迁移学习：把从任务A中学习到的信息迁移到另外一个不同的任务B中的方式。要求</p>
+          <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>[toc]</p>
+<h3 id="线性回归-to-逻辑回归"><a href="#线性回归-to-逻辑回归" class="headerlink" title="线性回归 to 逻辑回归"></a>线性回归 to 逻辑回归</h3><p><strong>本质</strong>：逻辑回归的本质就是在线性回归的基础上做了一个非线性的映射（变换），使得算法具有非线性的属性。<br>Q1:为什么要加这个非线性的变换呢？<br>答：因为对于线性回归，预测的变量是连续型的变量，不适合于分类型的离散变量（eg y=0或者y=1）。原因在于线性回归的定义可能让y大于0或者小于1，现在我们需要让0&lt;=y&lt;=1。就用sigmoid函数做映射函数。sigmod函数在负无穷大时，趋向于0；正无穷大时，趋向于1。</p>
+<p>为什么不采用分段函数而要采用sigmoid函数呢？因为sigmoid函数是连续的，阶梯函数是不连续且不可微的</p>
+<h3 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h3><p>$$h_\theta(x) = \frac{1}{1+e^{-\theta^T x}}$$</p>
 <ul>
-<li>任务A和任务B有相同的输入；</li>
-<li>必须任务A比任务B有更多的数据。(如果任务A的数据比任务B少时，并不能得到很大的增益。)</li>
+<li>当$$h_\theta(x)\geq0.5$$时，预测y=1</li>
+<li>当$$h_\theta(x)&lt;0.5$$时，预测y=0</li>
 </ul>
-<p>训练方式</p>
+<p>等同于</p>
 <ul>
-<li><p>B的数据量小时：可以只训练最后一层和输出层的神经网络，或者训练最后一到两层的神经网络；</p>
-</li>
-<li><p>B的数据量大时：可以对神经网络的所有参数都进行重新训练</p>
-<p>​                              <code>此时训练的初始化阶段称为预训练（pre-training），因为使用A的数据预初始化/预训练了神经网络的权重。在B上的训练有时被称为微调（fine_tuning）</code></p>
-</li>
+<li>当$$\theta^T\ge0$$时，预测y=1</li>
+<li>当$$\theta^T&lt;0$$时，预测y=0</li>
 </ul>
-<p>example</p>
-<ol>
-<li>图像识别：有100万张图像检测的任务A，和100张放射扫描诊断的任务B。在A上预训练可以学习到很多图像的组织节后和自然特性信息，比如边界检测、曲线检测、明暗对象检测等。能帮助在任务B中学习的更快，或者减少一些学习的数据。</li>
-<li>语音检测：训练好的语音识别系统A（输入为语音，输出对应的文字），和‘唤醒词’/‘触发词’检测系统，比如用hisiri，唤醒苹果系统。可以创建好几层新的神经网络，来给唤醒系统打上新的Y标签</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/26/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Transfer%20learning/" data-id="cklm8jimq001559v3e1sz3oxo" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-shuiliantan.github.io/ng/第二周/Bias and Variance with mismatched data distributions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/25/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Bias%20and%20Variance%20with%20mismatched%20data%20distributions/" class="article-date">
-  <time class="dt-published" datetime="2020-05-25T02:24:04.872Z" itemprop="datePublished">2020-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Problem:当训练集和验证集来自不同分布时，如果训练集误差为1%，验证集误差为10%，不能说明方差过大。也许在验证集上表现一般，只是因为训练集难度较低，验证集难度较高</p>
-<p>Sulution: 从训练集中随机取出一小块数据作为训练-开发集。得到</p>
+<p>假设对于2个特征变量的函数，$$h_\theta(x) = \frac{1}{1+e^-{(\theta_0+\theta_1x_1+\theta_2x_2)}}$$，最后求解为</p>
+<p>$$\begin{cases} \ \theta_0=-3\ \theta_1=1\\theta_2=1\end{cases}$$</p>
+<p>则当$$\theta_0+\theta_1x_1+\theta_2x_2\ge0$$时，y=1;当$$\theta_0+\theta_1x_1+\theta_2x_2&lt;0$$时，y=0;那么决策边界就是$$\theta_0+\theta_1x_1+\theta_2x_2=0$$这条线；</p>
+<p>另外一种情况就是可能 $$-1+x_1^2+x_2^2=0$$也是决策边界，代表一个圆；</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>Q2: 为什么不用线性回归的损失函数作为逻辑回归的损失函数呢？</p>
+<p>答：继续使用线性回归的损失函数，会导致代价函数变成一个非凸函数。这就导致会有很多局部最小值，用梯度下降法很难保证其收敛到全局最小值。</p>
+<p>Q3：损失函数特点？</p>
 <ul>
-<li>training set  error</li>
-<li>Training-dev set error</li>
-<li>Dev error</li>
-<li>test error</li>
+<li>当真实类别y=1时，异常概率越大，损失越小</li>
+<li>当真实类别y=0时，异常概率越小，损失越大</li>
 </ul>
-<p>![image-20200526100733903](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200526100733903.png)</p>
-<p>![image-20200526100753161](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200526100753161.png)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/25/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Bias%20and%20Variance%20with%20mismatched%20data%20distributions/" data-id="cklm8jimh000z59v3hw0whyza" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-shuiliantan.github.io/ng/第二周/Training and testing on different distributions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/25/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Training%20and%20testing%20on%20different%20distributions/" class="article-date">
-  <time class="dt-published" datetime="2020-05-25T01:33:38.248Z" itemprop="datePublished">2020-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>目标：检测移动app上，用户上传的照片是不是猫的照片</p>
-<p>数据集：20万张web爬下来的照片（分辨率高的）、1万张移动app照片（拍摄和构图不怎么专业，大多是糊的）</p>
-<p>切分方式1：20万张web照片和1万张移动app照片随机混合，然后切分</p>
+<p>$$J= \begin{cases} -log(p)&amp; \text{y=1}\ -log(1-p)&amp; \text{y=0} \end{cases}$$</p>
+<p>通过控制系数的方法，将两个方程联系起来，可以得到，单个样本的损失函数为：</p>
+<p>$$J = -log(p)-(1-p)log(1-p)$$</p>
+<p>全部样本的损失可以取平均值</p>
+<p>$$J(\theta) = -\frac{1}{m}\sum_{i=1}^m y^ilog(p^i)+(1-y^i)log(1-p^i)$$</p>
+<p>Q4:通过最大似然函数求解损失函数</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>我们在线性回归的基础上，修改得到逻辑回归。主要内容为：</p>
 <ul>
-<li>优点：训练集验证集测试集都是同一个分布，</li>
-<li>缺点：设置的开发集使团队致力于优化1个与实际关心的目标 并不相同的数据分布</li>
+<li>定义sigmoid方法，使用sigmoid方法生成逻辑回归模型</li>
+<li>定义损失函数，并使用梯度下降法得到参数</li>
+<li>将参数代入到逻辑回归模型中，得到概率</li>
+<li>将概率转化为分类</li>
 </ul>
-<p>切分方式2：训练集=20万个web照片+5000个app照片，验证集和测试集分别2500个app照片</p>
+<pre><code>import numpy as np
+
+# 因为逻辑回归是分类问题，因此需要对评价指标进行更改
+
+from .metrics import accuracy_score
+
+class LogisticRegression:
+def __init__(self):
+    &quot;&quot;&quot;初始化Logistic Regression模型&quot;&quot;&quot;
+    self.coef_ = None
+    self.intercept_ = None
+    self._theta = None
+
+&quot;&quot;&quot;
+定义sigmoid方法
+参数：线性模型t
+输出：sigmoid表达式
+&quot;&quot;&quot;
+def _sigmoid(self, t):
+    return 1. / (1. + np.exp(-t))
+
+&quot;&quot;&quot;
+fit方法，内部使用梯度下降法训练Logistic Regression模型
+参数：训练数据集X_train, y_train, 学习率, 迭代次数
+输出：训练好的模型
+&quot;&quot;&quot;
+def fit(self, X_train, y_train, eta=0.01, n_iters=1e4):
+    
+    assert X_train.shape[0] == y_train.shape[0], \
+        &quot;the size of X_train must be equal to the size of y_train&quot;
+
+    &quot;&quot;&quot;
+    定义逻辑回归的损失函数
+    参数：参数theta、构造好的矩阵X_b、标签y
+    输出：损失函数表达式
+    &quot;&quot;&quot;
+    def J(theta, X_b, y):
+        # 定义逻辑回归的模型：y_hat
+        y_hat = self._sigmoid(X_b.dot(theta))
+        try:
+            # 返回损失函数的表达式
+            return - np.sum(y*np.log(y_hat) + (1-y)*np.log(1-y_hat)) / len(y)
+        except:
+            return float(&#39;inf&#39;)
+    &quot;&quot;&quot;
+    损失函数的导数计算
+    参数：参数theta、构造好的矩阵X_b、标签y
+    输出：计算的表达式
+    &quot;&quot;&quot;
+    def dJ(theta, X_b, y):
+        return X_b.T.dot(self._sigmoid(X_b.dot(theta)) - y) / len(y)
+
+    &quot;&quot;&quot;
+    梯度下降的过程
+    &quot;&quot;&quot;
+    def gradient_descent(X_b, y, initial_theta, eta, n_iters=1e4, epsilon=1e-8):
+        theta = initial_theta
+        cur_iter = 0
+        while cur_iter &lt; n_iters:
+            gradient = dJ(theta, X_b, y)
+            last_theta = theta
+            theta = theta - eta * gradient
+            if (abs(J(theta, X_b, y) - J(last_theta, X_b, y)) &lt; epsilon):
+                break
+            cur_iter += 1
+        return theta
+
+    X_b = np.hstack([np.ones((len(X_train), 1)), X_train])
+    initial_theta = np.zeros(X_b.shape[1])
+    # 梯度下降的结果求出参数heta
+    self._theta = gradient_descent(X_b, y_train, initial_theta, eta, n_iters)
+    # 第一个参数为截距
+    self.intercept_ = self._theta[0]
+    # 其他参数为各特征的系数
+    self.coef_ = self._theta[1:]
+    return self
+
+&quot;&quot;&quot;
+逻辑回归是根据概率进行分类的，因此先预测概率
+参数：输入空间X_predict
+输出：结果概率向量
+&quot;&quot;&quot;
+def predict_proba(self, X_predict):
+    &quot;&quot;&quot;给定待预测数据集X_predict，返回表示X_predict的结果概率向量&quot;&quot;&quot;
+    assert self.intercept_ is not None and self.coef_ is not None, \
+        &quot;must fit before predict!&quot;
+    assert X_predict.shape[1] == len(self.coef_), \
+        &quot;the feature number of X_predict must be equal to X_train&quot;
+
+    X_b = np.hstack([np.ones((len(X_predict), 1)), X_predict])
+    # 将梯度下降得到的参数theta带入逻辑回归的表达式中
+    return self._sigmoid(X_b.dot(self._theta))
+
+&quot;&quot;&quot;
+使用X_predict的结果概率向量，将其转换为分类
+参数：输入空间X_predict
+输出：分类结果
+&quot;&quot;&quot;
+def predict(self, X_predict):
+    &quot;&quot;&quot;给定待预测数据集X_predict，返回表示X_predict的结果向量&quot;&quot;&quot;
+    assert self.intercept_ is not None and self.coef_ is not None, \
+        &quot;must fit before predict!&quot;
+    assert X_predict.shape[1] == len(self.coef_), \
+        &quot;the feature number of X_predict must be equal to X_train&quot;
+    # 得到概率
+    proba = self.predict_proba(X_predict)
+    # 判断概率是否大于0.5，然后将布尔表达式得到的向量，强转为int类型，即为0-1向量
+    return np.array(proba &gt;= 0.5, dtype=&#39;int&#39;)
+
+def score(self, X_test, y_test):
+    &quot;&quot;&quot;根据测试数据集 X_test 和 y_test 确定当前模型的准确度&quot;&quot;&quot;
+
+    y_predict = self.predict(X_test)
+    return accuracy_score(y_test, y_predict)
+
+def __repr__(self):
+    return &quot;LogisticRegression()&quot;
+</code></pre>
+<p>下面我们使用Iris数据集，来调用上面实现的逻辑回归。</p>
+<p>数据展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">iris &#x3D; datasets.load_iris()</span><br><span class="line">X &#x3D; iris.data</span><br><span class="line">y &#x3D; iris.target</span><br><span class="line">X &#x3D; X[y&lt;2,:2]</span><br><span class="line">y &#x3D; y[y&lt;2]</span><br><span class="line">plt.scatter(X[y&#x3D;&#x3D;0,0], X[y&#x3D;&#x3D;0,1], color&#x3D;&quot;red&quot;)</span><br><span class="line">plt.scatter(X[y&#x3D;&#x3D;1,0], X[y&#x3D;&#x3D;1,1], color&#x3D;&quot;blue&quot;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from myAlgorithm.model_selection import train_test_split</span><br><span class="line">from myAlgorithm.LogisticRegression import LogisticRegression</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test &#x3D; train_test_split(X, y, seed&#x3D;666)</span><br><span class="line">log_reg &#x3D; LogisticRegression()</span><br><span class="line">log_reg.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># 查看训练数据集分类准确度</span><br><span class="line"></span><br><span class="line">log_reg.score(X_test, y_test)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/08/shuiliantan.github.io/Algorithm/linear%20regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/08/shuiliantan.github.io/Algorithm/linear%20regression/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-08 22:22:42" itemprop="dateCreated datePublished" datetime="2019-12-08T22:22:42+08:00">2019-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-24 14:22:36" itemprop="dateModified" datetime="2019-12-24T14:22:36+08:00">2019-12-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>简单线性回归方程 $$y=ax+b$$</p>
+<p>损失函数为：平方损失函数   $$L=\sum_{i=0}^n(y-(ax_i+ b))^2$$</p>
+<p>当损失函数最小，即L=0时，求解a和b</p>
+<h3 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h3><p>对a和b求偏导，</p>
+<p><img src="../common/linear_regression.jpg" alt="linear"></p>
+<h3 id="梯度下降求解"><a href="#梯度下降求解" class="headerlink" title="梯度下降求解"></a>梯度下降求解</h3><p>梯度下降就是按照梯度的方向改变$$\theta$$的值，因为梯度的方向就是使损失函数变化最快的方向</p>
+<p>$$\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}L$$</p>
+<p><strong>批量梯度下降</strong></p>
+<p>每次更新$$\theta$$要保证所有样本的代价函数下降最快</p>
+<p><img src="https://images0.cnblogs.com/blog/310680/201409/021653297666228.jpg" alt="img"></p>
+<p>于是</p>
+<p><img src="https://images0.cnblogs.com/blog/310680/201409/021654119532239.jpg" alt="img"></p>
+<p>随机梯度下降**</p>
+<p>每次更新$$\theta $$ 保证某一个样本的代价函数下降的最快</p>
+<p><strong>小批量梯度下降</strong></p>
+<p>每次更新$$\theta $$ 保证k个样本的代价函数下降的最快</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/24/shuiliantan.github.io/data_preprocessing/coding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/24/shuiliantan.github.io/data_preprocessing/coding/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-24 22:58:49 / Modified: 23:08:36" itemprop="dateCreated datePublished" datetime="2019-11-24T22:58:49+08:00">2019-11-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前言：如果我们使用的模型很简单（比如逻辑回归LR），我们通常会把连续型的特征转换为离散型的特征，然后再对离散型的特征进行one-hot 编码或者哑编码。这样会使我们的模型具有很强的非线性能力。</p>
+<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>解释：将离散特征的每一种状态都看成是一种状态，保证每一种取值只保证一种状态处于激活态，其他状态位都为0。</p>
+<h3 id="哑编码"><a href="#哑编码" class="headerlink" title="哑编码"></a>哑编码</h3><p>解释：将任意一个状态位去除</p>
+<p><strong>总结：我们使用one-hot编码时，通常我们的模型不加bias项 或者 加上bias项然后使用<img src="https://images2017.cnblogs.com/blog/1251096/201711/1251096-20171104162333248-539020480.png" alt="img">正则化手段去约束参数；当我们使用哑变量编码时，通常我们的模型都会加bias项，因为不加bias项会导致固有属性的丢失</strong>。</p>
+<p>选择建议：我感觉最好是选择<strong>正则化 + one-hot编码</strong>；哑变量编码也可以使用，不过最好选择前者。虽然哑变量可以去除one-hot编码的冗余信息，但是因为每个离散型特征各个取值的地位都是对等的，随意取舍未免来的太随意。</p>
+<h3 id="连续值的离散化为什么会提升模型的非线性能力？"><a href="#连续值的离散化为什么会提升模型的非线性能力？" class="headerlink" title="连续值的离散化为什么会提升模型的非线性能力？"></a>连续值的离散化为什么会提升模型的非线性能力？</h3><p> 　简单的说，使用连续变量的LR模型，模型表示为公式（1），而使用了one-hot或哑变量编码后的模型表示为公式（2）</p>
+<p>　　　　　<img src="https://images2017.cnblogs.com/blog/1251096/201711/1251096-20171106165501794-386583892.png" alt="img"></p>
+<p>式中$x_1$表示连续型特征，$\theta_1$、$\theta_2$、$\theta_3$分别是离散化后在使用one-hot或哑变量编码后的若干个特征表示。这时我们发现使用连续值的LR模型用一个权值去管理该特征，而one-hot后有三个权值管理了这个特征，这样使得参数管理的更加精细，所以这样拓展了LR模型的非线性能力。</p>
+<p>　　这样做除了增强了模型的<strong>非线性能力</strong>外，还有什么好处呢？这样做了我们至少不用再去对变量进行归一化，也可以<strong>加速</strong>参数的更新速度；再者使得一个很大权值管理一个特征，拆分成了许多小的权值管理这个特征多个表示，这样做降低了特征值扰动对模型为<strong>稳定性</strong>影响，也降低了异常数据对模型的影响，进而使得模型具有更好的<strong>鲁棒性</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/24/shuiliantan.github.io/data_preprocessing/standard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/24/shuiliantan.github.io/data_preprocessing/standard/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-24 22:53:44" itemprop="dateCreated datePublished" datetime="2019-11-24T22:53:44+08:00">2019-11-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><p>方法说明：把某个字段（如value），通过某种方法映射到一定区间内（通常是[-1, 1]或[0, 1]）。常用于数据预处理，可以提升机器学习的训练效率。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>归一化方法</strong>：string类型，可选值为MinMaxScaler、StandardScaler、RobustScaler，具体含义如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>归一化方法</th>
+<th>归一化方法中文名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MinMaxScaler</td>
+<td>最大最小归一化</td>
+<td>对特征进行缩放归一化，默认归一化后特征的数值范围在[0,1]之间。 计算公式为：(x-min)/(max-min)</td>
+</tr>
+<tr>
+<td>RobustScaler</td>
+<td>分位数归一化</td>
+<td>对特征进行缩放归一化，通过 Interquartile Range (IQR) 标准化数据，取四分之一和四分之三分位数为标准进行缩放。计算公式为：(x-中位数)/四分位距</td>
+</tr>
+<tr>
+<td>StandardScaler</td>
+<td>标准归一化</td>
+<td>标准归一化也叫z-score归一化，它将一列特征处理为符合标准正态分布（均值为0，标准差为1）。计算公式为：(x-Mean)/std</td>
+</tr>
+</tbody></table>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>一般而言，原始的训练数据中，每一维特征的来源以及度量单位不同，会造成特征的分布范围往往差异很大。当计算不同样本之间的距离时，取值范围大的特征会起到主导作用。对于基于相似度比较的机器学习方法(如最近邻分类器)，必须先对样本进行预处理，将各维度特征归一化到同一取值区间，并且消除不同特征之间的相关性，才能获得理想的结果。</p>
+<p>下图是使用标准归一化方法(StandardScaler)对二维数据进行归一化的例子：</p>
 <ul>
-<li>优点：长期来说性能更好</li>
-<li>缺点：训练集和验证集/测试集来自不同分布</li>
+<li><p>左图’origin_data’表示的是原始数据；</p>
+</li>
+<li><p>中图’zero-centered data’是原始数据减去均值后的数据，数据被移动到原点周围；</p>
+</li>
+<li><p>右图’normalized_data’将中图得到的数据除以标准差，得到标准化的数据，可以看出每个维度上的尺度是一致的（红色线段的长度表示尺度）。</p>
+</li>
 </ul>
-<p>![image-20200525095512551](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200525095512551.png)</p>
-<p>切分的目的：</p>
+<p><img src="http://static.bkdata.oa.com/algorithm/dataprepare/v2/standard_explain.png" alt="image-20181211111029866"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/24/shuiliantan.github.io/data_preprocessing/replace_outlier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/24/shuiliantan.github.io/data_preprocessing/replace_outlier/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-24 22:52:22 / Modified: 22:52:35" itemprop="dateCreated datePublished" datetime="2019-11-24T22:52:22+08:00">2019-11-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="异常值替换"><a href="#异常值替换" class="headerlink" title="异常值替换"></a>异常值替换</h4><p>方法说明：对某个字段（如value）的异常值（如出现次数太少、太稀疏的值）， 按照一定方式进行替换。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>异常值定义</strong>：string类型，表示检测数据中异常值的方法，默认值是“箱线图”。可选值有”常数”、”N倍标准差”、”箱线图”，每个值对应的详情如下:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">异常值定义</th>
+<th align="left">异常值定义英文名</th>
+<th align="left">说明</th>
+<th align="left">子参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">常数</td>
+<td align="left">constant</td>
+<td align="left">指定某个常数为异常值</td>
+<td align="left">常数值：float类型，默认值是0。表示输入数据中等于这个值的数据为异常值。</td>
+</tr>
+<tr>
+<td align="left">N倍标准差</td>
+<td align="left">N-sigma</td>
+<td align="left">超过N倍标准差的为异常值</td>
+<td align="left">标准差倍数：float类型，大于0，默认值是5.0。当标准差倍数为N时，输入数据中，超过样本均值 +N * 标准差，或者小于样本均值- N * 标准差的数据为异常值。</td>
+</tr>
+<tr>
+<td align="left">箱线图</td>
+<td align="left">boxplot</td>
+<td align="left">利用箱线图的四分位距（IQR）对异常值进行检测</td>
+<td align="left">IQR倍数：float类型，表示四分位距的倍数，默认值是3。例如，IQR倍数=3表示，输入数据中，超过上四分位+3 * IQR，或者小于下四分位-3*IQR的数据为异常值。</td>
+</tr>
+</tbody></table>
 <ul>
-<li><p>建议dev 和test set 来自同一分布，因为这样你们就瞄准了目标</p>
-</li>
-<li><p>现在的趋势是 使用更多数据作为训练集 使用较少的数据作为开发集和测试。</p>
-</li>
-<li><p><strong>测试集：</strong>作用是帮我们评估最终系统的性能，因此，测试的大小只要能保证对系统整体性能评估的高置信度即可。</p>
-<p>有时候没有测试集也是可以的，不过不建议这么做，最好在上线前使用测试集得到对系统性能的无偏估计。</p>
-</li>
+<li><strong>替换方法</strong>：string类型，表示对异常值进行替换的方法，默认值是“上一个时刻的值”。可选值有”常数”、”上一个时刻的值”、”下一个时刻的值”、”最近一个时刻的值”、”线性插值”、”样条插值”、”Hermite插值”、”滑动均值”、”滑动中位数”，每个值对应的说明如下:</li>
 </ul>
-<p>当用户想要自定义切分，可能训练集和验证集不来自同一分布时，对于长期的目标是好的。我们作为平台方没办法控制</p>
-<p>用户的需求是没办法去定义的。本来数据是混合在一起，作为平台上只可能尽可能的保证训练集这验证集来自统一分布，但是用户只关心app上的照片检测的准确率，所以</p>
+<table>
+<thead>
+<tr>
+<th align="left">替换方法</th>
+<th align="left">填充替换英文名</th>
+<th align="left">说明</th>
+<th align="left">子参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">常数</td>
+<td align="left">constant</td>
+<td align="left">用户可指定填充的数值</td>
+<td align="left">常数值：float类型，默认值是-1。表示将异常的数据替换成该常数值。</td>
+</tr>
+<tr>
+<td align="left">上一个时刻的值</td>
+<td align="left">previous</td>
+<td align="left">上一个非缺失时刻的值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">下一个时刻的值</td>
+<td align="left">next</td>
+<td align="left">下一个非缺失时刻的值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">最近一个时刻的值</td>
+<td align="left">nearest</td>
+<td align="left">距离最近的非缺失值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">线性插值</td>
+<td align="left">linear</td>
+<td align="left">相邻非缺失值的线性插值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">样条插值</td>
+<td align="left">spline</td>
+<td align="left">三次样条插值</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">Hermite插值</td>
+<td align="left">pchip</td>
+<td align="left">分段三次Hermite插值多项式</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">滑动均值</td>
+<td align="left">movemean</td>
+<td align="left">窗口长度为window的移动均值，用户可指定窗口长度</td>
+<td align="left">窗口长度: int类型，默认值是10。表示滑动窗口中样本点的个数。</td>
+</tr>
+<tr>
+<td align="left">滑动中位数</td>
+<td align="left">movemedian</td>
+<td align="left">窗口长度为window的移动中位数，用户可指定窗口长度</td>
+<td align="left">窗口长度: int类型，默认值是10。表示滑动窗口中样本点的个数。</td>
+</tr>
+</tbody></table>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/25/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Training%20and%20testing%20on%20different%20distributions/" data-id="cklm8jimp001459v3aka27sir" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-</article>
-
-
-
   
-    <article id="post-shuiliantan.github.io/ng/第二周/Build your first system quickly, then iterate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/24/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Build%20your%20first%20system%20quickly,%20then%20iterate/" class="article-date">
-  <time class="dt-published" datetime="2020-05-24T08:25:04.810Z" itemprop="datePublished">2020-05-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+  
+
       
-        <p>当正在研究一个新问题时，建议不要考虑太多，主要目标是构建可用的东西，不是去发明一个新的机器学习算法。在早期先建议构建运行的好的东西，然后进行偏差方差分析，误差分析，用这些分析的结果去确定接下来的优先级</p>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/24/shuiliantan.github.io/data_preprocessing/fillna/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/24/shuiliantan.github.io/data_preprocessing/fillna/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-24 22:50:33 / Modified: 22:51:14" itemprop="dateCreated datePublished" datetime="2019-11-24T22:50:33+08:00">2019-11-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="缺失值填充"><a href="#缺失值填充" class="headerlink" title="缺失值填充"></a>缺失值填充</h3><p>方法说明：对某个字段（如value）的缺失值， 按照一定方式进行填充。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>填充方法</strong>：string类型，表示对数据中的缺失值进行填充的方法。可选值有”常数”、”上一个时刻的值”、”下一个时刻的值”、”最近一个时刻的值”、”线性插值”、”样条插值”、”Hermite插值”、”滑动均值”、”滑动中位数”，每个取值对应的详情如下:</p>
+<table>
+<thead>
+<tr>
+<th>填充方法</th>
+<th>填充方法英文名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>常数</td>
+<td>constant</td>
+<td>用户可指定填充的数值</td>
+</tr>
+<tr>
+<td>上一个时刻的值</td>
+<td>previous</td>
+<td>上一个非缺失的时刻的值</td>
+</tr>
+<tr>
+<td>下一个时刻的值</td>
+<td>next</td>
+<td>下一个非缺失的时刻的值</td>
+</tr>
+<tr>
+<td>最近一个时刻的值</td>
+<td>nearest</td>
+<td>距离最近的非缺失值</td>
+</tr>
+<tr>
+<td>线性插值</td>
+<td>linear</td>
+<td>相邻非缺失值的线性插值</td>
+</tr>
+<tr>
+<td>样条插值</td>
+<td>spline</td>
+<td>三次样条插值</td>
+</tr>
+<tr>
+<td>Hermite插值</td>
+<td>pchip</td>
+<td>分段三次Hermite插值多项式</td>
+</tr>
+<tr>
+<td>滑动均值</td>
+<td>movemean</td>
+<td>窗口长度为window的移动均值，用户可指定窗口长度</td>
+</tr>
+<tr>
+<td>滑动中位数</td>
+<td>movemedian</td>
+<td>窗口长度为window的移动中位数，用户可指定窗口长度</td>
+</tr>
+</tbody></table>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/24/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Build%20your%20first%20system%20quickly,%20then%20iterate/" data-id="cklm8jimi001059v3fb4z1vcd" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-</article>
-
-
-
   
-    <article id="post-shuiliantan.github.io/ng/第二周/Cleaning up incorrectly labeled data" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/22/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Cleaning%20up%20incorrectly%20labeled%20data/" class="article-date">
-  <time class="dt-published" datetime="2020-05-22T01:29:34.915Z" itemprop="datePublished">2020-05-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+  
+
       
-        <p>Q : 当发现标签错误时，值得花费时间取修正这些标签吗？</p>
-<p>A：<strong>深度学习算法</strong>对训练集的<strong>随机错误很稳健</strong>，只要标记的错误不是那么偏离随机分布，比如只是由于人的偶然错误造成的。如果这些错误是很随机的错误，基本上可以不管，不用花费太多时间取修正。当然，纠正也是没问题，有时候也是很有必要的。但是只要总数据量够大，实际错误标记的label占比不高，也可以不做。</p>
-<p>但是深度学习算法对<strong>系统错误不稳健</strong>，例如：如果一直把狗标记为猫，那么算法最后就会把狗预测为猫</p>
-<p>![image-20200522095447703](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200522095447703.png)</p>
-<p>建议：</p>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/17/shuiliantan.github.io/evaluate/classify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/17/shuiliantan.github.io/evaluate/classify/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-17 21:36:16" itemprop="dateCreated datePublished" datetime="2019-11-17T21:36:16+08:00">2019-11-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵:"></a>混淆矩阵:</h3><p>对于二分类的分类问题, 我们可以根据样例将真实类别与预测类别的组合分为真正例(true positive),假正例(false positive),真反例(true negative), 假反例(false negative)四种情形.</p>
 <ul>
-<li><p>dev test set same distribution</p>
+<li><p>假正例(FP, false positive)：被模型错误地预测为正类别的样本</p>
 </li>
-<li><p>对right和wrong的预测都需要check观察。理解机器犯什么错，探究数据，计算错误率，这样可指导下一步去做什么</p>
+<li><p>假负例 (FN, false negative)：被模型错误地预测为正类别的样本</p>
 </li>
-<li><p>Train slightly different distribbution from dev/test set</p>
+<li><p>负例 (TN, true negative)：被模型正确地预测为负类别的样本</p>
+</li>
+<li><p>正例 (TP, true positive)：被模型正确地预测为正类别的样本</p>
+</li>
+</ul>
+<p><img src="../common/confusion-matrix.jpeg" alt="confusion matrix"></p>
+<p>根据混淆矩阵可以计算如下指标:</p>
+<p>tps和fps是阈值逆序排列后，不同阈值对应的tp和fp。tps[-1]为阈值为0时，所有的点都被预测为正咯，所以代表为真实的正例总数，fps[-1]为真实的反例总数</p>
+<p>fps = [0, 1, 1, 1, 2, 3, 4, 5, 6, 7]</p>
+<p>tps = [1, 1, 2, 3, 3, 3, 3, 3, 3, 3]</p>
+<p>thresholds = [0.42600526758001989, 0.42017521636505745, 0.41936155918127238, 0.39760831479768338, 0.38769987193780364, 0.3667541015524296, 0.33998332945141224, 0.33803961944475219, 0.32367439192936548, 0.31689620142873609]</p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线全称是‘受试者工作曲线’。ROC曲线越远离对角线，模型效果越好。如果要比较两个分类器的性能孰优孰劣，可以比较ROC曲线下的区域面积即为AUC值，AUC值越接近1模型的效果越好。</p>
+<p>ROC 曲线下面积是，对于随机选择的正类别样本确实为正类别（recall），以及随机选择的负类别样本为正类别(fpr)，分类器更确信前者的概率。</p>
+<p>纵轴：真正例率TPR=TP/（TP+FN）,也就是召回率Recall；</p>
+<p>横轴：假正例率FPR=FP/（FP+TN）。</p>
+<p><img src="../common/roc.jpeg" alt="roc"></p>
+<h3 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h3><p>PR图反应了分类器在不同阈值下识别正例的准确率和覆盖率之间的权衡。</p>
+<p>在一些应用中，对查全率和查准率的重视程度有所不同。推荐系统中，更希望推荐商品是用户感兴趣的，此时查准率更重要；逃犯信息检索中，更希望少漏掉逃犯，查全率更重要，可以通过加权计算F1值来比较性能。</p>
+<p>纵轴：查准率Precision=TP/（TP+FP），</p>
+<p>横轴：查全率Recall=TP/（TP+FN）。<br><img src="../common/pr.jpg" alt="p"></p>
+<h3 id="Lift-提升-曲线"><a href="#Lift-提升-曲线" class="headerlink" title="Lift(提升)曲线"></a>Lift(提升)曲线</h3><p>Lift 曲线是不同阈值下Lift和预测正例占比的轨迹。</p>
+<p>在使用模型进行预测之后，模型的查准率为precision=TP/（TP+FP），在不使用模型之前，模型的查准率为pre_precision=(TP+FN)/(TP+FP+FN+TN),所以在使用模型之后，模型的查准率提升至Lift值=precision/pre_precision.Lift（提升）曲线衡量的是，与不利用模型相比，模型的预测能力“变好”了多少。lift(提升指数)越大，模型的运行效果越好。一般lift(提升指数)&gt;1.</p>
+<p>纵轴:Lift值=precision/pre_precision,</p>
+<p>横轴：预测正例占比x=(TP+FP)/(TP+FP+FN+TN)</p>
+<h3 id="Gain曲线"><a href="#Gain曲线" class="headerlink" title="Gain曲线"></a>Gain曲线</h3><p>Gain增益图是描述整体精准率的指标.和Lift曲线在于纵轴刻度的不同。</p>
+<p>纵轴：Gain=precision=TP/（TP+FP）,</p>
+<p>横轴：预测正例占比x=(TP+FP)/(TP+FP+FN+TN)</p>
+<h3 id="K-S曲线"><a href="#K-S曲线" class="headerlink" title="K-S曲线"></a>K-S曲线</h3><p>KS曲线是正样本洛伦兹曲线和负样本洛伦兹曲线的差值曲线，KS曲线的最高点定义为KS值。</p>
+<p>KS是检验阳性与阴性分类区分能力的指标，主要是验证模型的区分能力</p>
+<p>纵轴：分别是TPR，FPR，与TPR与FPR的距离</p>
+<p>横轴：预测正例占比x(阈值)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/17/shuiliantan.github.io/Algorithm/knn/principle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/17/shuiliantan.github.io/Algorithm/knn/principle/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-17 21:04:57" itemprop="dateCreated datePublished" datetime="2019-11-17T21:04:57+08:00">2019-11-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>K近邻法（knn）是一种基本的分类与回归方法。</p>
+<p><strong>算法思路</strong>：<br>如果一个样本在特征空间中的k个最相似(即特征空间中最邻近)的样本中的大多数属于某一个类别，则该样本也属于这个类别。</p>
+<p>k近邻模型的三个基本要素：</p>
+<ul>
+<li><p>k值的选择：k值的选择会对结果产生重大影响。较小的k值可以减少近似误差，但是会增加估计误差；较大的k值可以减小估计误差，但是会增加近似误差。一般而言，通常采用交叉验证法来选取最优的k值。</p>
+</li>
+<li><p>距离度量：距离反映了特征空间中两个实例的相似程度。可以采用欧氏距离、曼哈顿距离等。<br>= 分类决策规则：往往采用多数表决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class sklearn.neighbors.KNeighborsClassifier(n_neighbors&#x3D;5, weights&#x3D;’uniform’, </span><br><span class="line">algorithm&#x3D;’auto’, leaf_size&#x3D;30, p&#x3D;2, metric&#x3D;’minkowski’, metric_params&#x3D;None, </span><br><span class="line">n_jobs&#x3D;None, **kwargs)</span><br><span class="line">                                          </span><br></pre></td></tr></table></figure></li>
+<li><p>n_neighbors：聚类个数。</p>
+</li>
+<li><p>weights（权重）：决定算法如何分配权重，默认为uniform，表示远近权重都一样。参数选项如下：</p>
+<ul>
+<li> ‘uniform’：不管远近权重都一样；</li>
+<li> ‘distance’：权重和距离成反比，距离预测目标越近具有越高的权重。</li>
+<li> 自定义函数：自定义一个函数，根据输入的坐标值返回对应的权重，达到自定义权重的目的。</li>
+</ul>
+</li>
+<li><p>algorithm：算法的选择，默认值为auto。</p>
+<ul>
+<li> brute：暴力搜索，计算预测样本和<strong>全部训练集样本</strong>的距离，最后筛选出前 K 个最近的样本。不过当数据较小或比较稀疏时，无论选择哪个最后都会使用 ‘brute’</li>
+<li>kd_tree ：KD 树是一种「二叉树」结构，就是把整个空间划分为特定的几个子空间，然后在合适的子空间中去搜索待预测的样本点。假设数据集样本数为 m，特征数为 n，则当<strong>样本数量 m 大于 2 的 n 次方时，用 KD 树算法搜索效果会比较好</strong></li>
+<li>ball_tree：对于一些分布不均匀的数据集，KD 树算法搜索效率并不好，为了优化就产生了球树这种算法。</li>
+<li>‘auto‘默认选项，自动选择合适的方法构建模型</li>
+</ul>
+</li>
+<li><p>leaf_size：只有ball_tree和kd_tree才有必要。表示停止建子树的叶子节点数量的阈值。默认30。但如果数据量增多这个参数需要增大，否则速度过慢不说，还容易过拟合。</p>
+</li>
+<li><p>p与metric：距离表示，当metric参数是”minkowski”的时候，p=1是manhattan_distance，p=2是euclidean_distance。默认为p=2</p>
+</li>
+<li><p>metric：指定距离度量方法，一般都是使用欧式距离。</p>
+<pre><code>• &#39;euclidean&#39; ：欧式距离
+• &#39;manhattan&#39;：曼哈顿距离
+• &#39;chebyshev&#39;：切比雪夫距离
+• &#39;minkowski&#39;： 闵可夫斯基距离，默认参数
+</code></pre>
+</li>
+<li><p>n_jobs：指定多少个CPU进行运算，默认是-1，也就是全部都算。</p>
 </li>
 </ul>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/22/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Cleaning%20up%20incorrectly%20labeled%20data/" data-id="cklm8jiml001259v3cp9cgxin" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-</article>
-
-
-
   
-    <article id="post-shuiliantan.github.io/ng/第二周/Carrying out error analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/21/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Carrying%20out%20error%20analysis/" class="article-date">
-  <time class="dt-published" datetime="2020-05-21T01:24:36.909Z" itemprop="datePublished">2020-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+  
+
       
-        <p>错误分析：训练的算法还没有达到人类的效果，需要手动检查错分类的情况，来得到下一步该怎么做。</p>
-<p>找到错分类 FP FN ，可能会创建新的分类</p>
-<p>通过对不同类中错误表示的例子计数，有助于判断优先级，</p>
-<p>![image-20200521093322293](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200521093322293.png)</p>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/10/shuiliantan.github.io/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/10/shuiliantan.github.io/README/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-10 23:01:35" itemprop="dateCreated datePublished" datetime="2019-11-10T23:01:35+08:00">2019-11-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="basic-machine-learning"><a href="#basic-machine-learning" class="headerlink" title="basic-machine-learning"></a>basic-machine-learning</h1><p>自主学习项目，学习计划见plan.jepg</p>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/21/shuiliantan.github.io/ng/%E7%AC%AC%E4%BA%8C%E5%91%A8/Carrying%20out%20error%20analysis/" data-id="cklm8jimj001159v35kichryi" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-</article>
-
-
-
   
-    <article id="post-shuiliantan.github.io/ng/Andrej Karpathy interview" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/19/shuiliantan.github.io/ng/Andrej%20Karpathy%20interview/" class="article-date">
-  <time class="dt-published" datetime="2020-05-19T02:05:42.487Z" itemprop="datePublished">2020-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>你已经给了很多建议 现在 仍有很多人想进入人工智能和深度学习领域 你能给这些人一些建议吗 — 没问题 我觉得当人们和我谈起CS231n课程<br />以及他们认为 这门课程非常有用的原因时 我反复听到的是 人们喜欢我们一直深入底层细节 他们不是在用什么库 而是看到了真正的代码 他们看到了一切是如何实现的 自己也实现了其中的大部分 要一直深入底层 理解背后的所有原理在 13 分 42 秒处开始记录13:42不把事物过于抽象简化也很重要 你需要充分了解全栈 当我学习这些知识的时候 这种做法收获最大 我只是从头开始把它实现了 这是很重要的 从理解知识的角度来看 这样做 性价比最高 我写了自己的库 叫做ConvNetJS 它是用JavaScript写的 实现了卷积神经网络 那就是我学习反向传播的方法 所以我一直建议人们 不要一开始就使用 TensorFlow这样的东西 当你能自己编写最底层的代码后 再去使用 你知道了底层的所有原理后 再使用这些框架 框架为你抽象掉了一些细节 但你必须知道背后的原理 所以这点对我帮助最大 这是人们上CS231n课程时最喜欢的一点 这也是我给大家的建议 所以不是去运行神经网络 然后顺其自然 对 在某些层的序列中 我知道当我加一些 Dropout层 效果会更好 但那并不是你想要的 在这种情况下 你就无法进行有效的调试 也无法有效地改进模型</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/19/shuiliantan.github.io/ng/Andrej%20Karpathy%20interview/" data-id="cklm8jilv000g59v35slr28z1" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-shuiliantan.github.io/Algorithm/others/小天_normal_distribution" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/05/18/shuiliantan.github.io/Algorithm/others/%E5%B0%8F%E5%A4%A9_normal_distribution/" class="article-date">
-  <time class="dt-published" datetime="2020-05-18T11:39:39.607Z" itemprop="datePublished">2020-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>![image-20200518194003288](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200518194003288.png)</p>
-<p>![image-20200518194506535](/Users/shuiliantan/Library/Application Support/typora-user-images/image-20200518194506535.png)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/05/18/shuiliantan.github.io/Algorithm/others/%E5%B0%8F%E5%A4%A9_normal_distribution/" data-id="cklm8jima000t59v3eavd1l2r" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
   
 
 
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A2%E8%BF%8E/" rel="tag">欢迎</a></li></ul>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E6%AC%A2%E8%BF%8E/" style="font-size: 10px;">欢迎</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/02/26/shuiliantan.github.io/index/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/26/%E6%AC%A2%E8%BF%8E%E4%BD%A0%E5%91%80/">欢迎你呀</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/08/shuiliantan.github.io/Algorithm/others/%E7%AE%97%E6%B3%95%E9%85%8D%E7%BD%AE/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/28/shuiliantan.github.io/Algorithm/others/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/23/shuiliantan.github.io/Anomaly-Detection-with-K-means/README/">(no title)</a>
-          </li>
-        
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
       </ul>
-    </div>
-  </div>
 
-  
-</aside>
-        
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
 
     </div>
-    <nav id="mobile-nav">
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
   
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>

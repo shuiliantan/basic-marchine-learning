@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="决策树[toc] 原理解释决策树是一个有监督的算法，可用于分类和回归。它从目标变量中学习一系列的决策规则，来对未知数据进行预测。学习到的规则就是一颗决策树。 决策树表示给定特征条件下，类的条件概率分布，这个条件概率分布表示在特征空间的划分上，将特征空间根据各个特征值不断进行划分，就将特征空间分为了多个不相交的单元，在每个单元定义了一个类的概率分布，这样，这条由根节点到达叶节点的路径就成了一个条件概">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2019/12/22/shuiliantan.github.io/Algorithm/DecisionTree_/principle/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="决策树[toc] 原理解释决策树是一个有监督的算法，可用于分类和回归。它从目标变量中学习一系列的决策规则，来对未知数据进行预测。学习到的规则就是一颗决策树。 决策树表示给定特征条件下，类的条件概率分布，这个条件概率分布表示在特征空间的划分上，将特征空间根据各个特征值不断进行划分，就将特征空间分为了多个不相交的单元，在每个单元定义了一个类的概率分布，这样，这条由根节点到达叶节点的路径就成了一个条件概">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-22T11:15:15.810Z">
+<meta property="article:modified_time" content="2020-04-20T06:44:49.191Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/12/22/shuiliantan.github.io/Algorithm/DecisionTree_/principle/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/22/shuiliantan.github.io/Algorithm/DecisionTree_/principle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-22 19:15:15" itemprop="dateCreated datePublished" datetime="2019-12-22T19:15:15+08:00">2019-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-20 14:44:49" itemprop="dateModified" datetime="2020-04-20T14:44:49+08:00">2020-04-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><p>[toc]</p>
+<h3 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h3><p>决策树是一个有监督的算法，可用于分类和回归。它从目标变量中学习一系列的决策规则，来对未知数据进行预测。学习到的规则就是一颗决策树。</p>
+<p><strong>决策树表示给定特征条件下，类的条件概率分布，这个条件概率分布表示在特征空间的划分上，将特征空间根据各个特征值不断进行划分，就将特征空间分为了多个不相交的单元，在每个单元定义了一个类的概率分布，这样，这条由根节点到达叶节点的路径就成了一个条件概率分布。</strong></p>
+<p>与其他模型相同，决策树学习用损失函数表示这一目标。<strong>决策树学习的损失函数通常是正则化的极大似然函数</strong>。决策树学习的策略是<strong>以损失函数为目标函数的最小化</strong>。</p>
+<p><strong>特征划分的规则</strong>：根据信息增、信息熵、gini系数去不断地寻找最优的特征，</p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p><strong>决策树学习本质上是从训练数据集中归纳出一组分类规则</strong>。</p>
+<p><strong>决策树学习的损失函数通常是正则化的极大似然函数</strong>。决策树学习的策略是<strong>以损失函数为目标函数的最小化</strong>。</p>
+<p> 错误分类的代价、额外的损失，例如树的复杂性，树的深度等</p>
+<h3 id="ID3算法（信息增益）"><a href="#ID3算法（信息增益）" class="headerlink" title="ID3算法（信息增益）"></a>ID3算法（信息增益）</h3><p>定义：信息增益表示在得知特征X的信息下，使得类Y的不确定信息减少的程度。</p>
+<ul>
+<li><p>信息熵代表信息的不确定性。信息熵越大，代表越不确定；信息熵越小，确定性越高。</p>
+<p>$$H = -\sum_{i=1}^np_ilog(p_i)$$</p>
+</li>
+<li><p>条件熵$$H(Y|X)$$表示在得知随机变量X的前提下，随机变量Y的不确定性。条件信息熵越小，说明划分后的纯度越高。</p>
+<p>$$H(Y|X) = -\sum_{i=1}^mp_iH(Y|X=x_i)$$</p>
+</li>
+</ul>
+<p>信息增益是相对于特征而言的。信息增益的定义为：数据集D的信息熵和在知道特征A后D的条件信息熵之差。</p>
+<p>$$g(D,A) = H(D)-H(D|A) =H(D)-\sum_{i=1}^v\frac{D_v}{D}H(D_v) $$</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算惩罚参数，信息增益g(D,A)与训练数据集D关于特征A的值的熵HA(D)之比</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    dataSet：样本数据集D</span></span><br><span class="line"><span class="string">    curtFeatIndex：当前用来划分数据集的特征A的位置</span></span><br><span class="line"><span class="string">    categories：特征A所有可能分类的集合</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    conditionalEnt：惩罚参数</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calPenaltyPara</span>(<span class="params">dataSet, curtFeatIndex, categories</span>):</span></span><br><span class="line">    penaltyItem = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 对于每一个分类，计算选择当前特征的条件下条件熵</span></span><br><span class="line">    <span class="comment"># 比如在选择“年龄”这一特征下，共有“老中青”三个小分类</span></span><br><span class="line">    <span class="keyword">for</span> categroy <span class="keyword">in</span> categories:</span><br><span class="line">        <span class="comment"># 得到当前特征条件下的小类的所有样本集合，即不包含当前特征的特征样本集</span></span><br><span class="line">        <span class="comment"># 如得到在选择“青年”这个小类下一共有5个样本，且不包含“年龄”这一特征</span></span><br><span class="line">        cdtSetCategroy = currentConditionSet(dataSet, curtFeatIndex, categroy)</span><br><span class="line">        <span class="comment"># 计算当前特征条件下的小分类，占总分类的比例</span></span><br><span class="line">        prob = <span class="built_in">len</span>(cdtSetCategroy) / <span class="built_in">float</span>(dataSet.shape[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># 累加得到惩罚项</span></span><br><span class="line">        penaltyItem += -prob * log(prob,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> penaltyItem</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算信息增益率（惩罚参数 * 信息增益）</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    baseEntropy：划分样本集合D的熵是为H(D)，即基本熵</span></span><br><span class="line"><span class="string">    dataSet：样本数据集D</span></span><br><span class="line"><span class="string">    curtFeatIndex：当前用来划分数据集的特征A的位置</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    infoGain：信息增益值</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calInfoGainRate</span>(<span class="params">baseEntropy,dataSet,curtFeatIndex</span>):</span></span><br><span class="line">    infoGainRate = <span class="number">0.0</span></span><br><span class="line">    <span class="comment"># 计算信息增益</span></span><br><span class="line">    infoGain = calInfoGain(baseEntropy,dataSet,curtFeatIndex)</span><br><span class="line">    <span class="comment"># 得到该特征的所有分类</span></span><br><span class="line">    categories = <span class="built_in">set</span>(dataSet[:,curtFeatIndex])</span><br><span class="line">    <span class="comment"># 计算惩罚项</span></span><br><span class="line">    penaltyItem = calPenaltyPara(dataSet, curtFeatIndex, categories)</span><br><span class="line">    <span class="comment"># 计算信息增益率</span></span><br><span class="line">    infoGainRatio = infoGain / penaltyItem</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#打印每个特征的信息增益率</span></span><br><span class="line">    print(<span class="string">&quot;第%d个特征的增益率为%.3f&quot;</span> % (curtFeatIndex, infoGainRatio))</span><br><span class="line">    <span class="keyword">return</span> infoGainRatio</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：寻找最优划分</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    dataSet：数据集</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    打印最优划分结果</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimalPartition</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    bestInfoGainRatio = <span class="number">0.0</span>   <span class="comment"># 最佳信息增益率初始值</span></span><br><span class="line">    bestFeatVec = -<span class="number">1</span>    <span class="comment"># 最佳划分的特征向量</span></span><br><span class="line">    <span class="comment"># 划分前样本集合D的熵H(D)，即基本熵</span></span><br><span class="line">    baseEntropy = calEntropy(dataSet)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 遍历每一个特征维度（列），得到基于当前特征划分的信息增益</span></span><br><span class="line">    <span class="keyword">for</span> curtFeatIndex <span class="keyword">in</span> <span class="built_in">range</span>(dataSet.shape[<span class="number">1</span>]-<span class="number">1</span>):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># categories是所有特征向量中当前特征的对应值的set集合（去重复）</span></span><br><span class="line">        <span class="comment"># 相当于该特征一共有几种分类，如“年龄”这一特征，分为“老中青”三类</span></span><br><span class="line">        <span class="comment">#categories = set(dataSet[:,curtFeatIndex])</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算信息增益率</span></span><br><span class="line">        infoGainRatio = calInfoGainRate(baseEntropy, dataSet, curtFeatIndex)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 选取最优信息增益率的划分</span></span><br><span class="line">        <span class="keyword">if</span> (infoGainRatio &gt; bestInfoGainRatio):</span><br><span class="line">            <span class="comment">#更新信息增益率，找到最大的信息增益率</span></span><br><span class="line">            bestInfoGainRatio = infoGainRatio</span><br><span class="line">            <span class="comment">#记录信息增益率最大的特征的索引值</span></span><br><span class="line">            bestFeatVec = curtFeatIndex</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">&quot;最佳的划分为第%d个特征，是”%s“，信息增益率为%.3f&quot;</span> % (bestFeatVec,strs[bestFeatVec],bestInfoGainRatio))</span><br><span class="line">    <span class="keyword">return</span>     </span><br><span class="line"></span><br><span class="line">optimalPartition(dataSet)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="C4-5算法（信息增益率）"><a href="#C4-5算法（信息增益率）" class="headerlink" title="C4.5算法（信息增益率）"></a>C4.5算法（信息增益率）</h3><p>因为信息熵倾向于选择分类属性越多的特征，因为越细的分类纯度越高。例如：对于唯一标识类的特征，划分后，信息熵为0，信息增益达到最大，但是这个对分类是没有用的，对于未知数据的泛化程度很低。所以需要对此加上一些惩罚。因此便有了信息增益。</p>
+<p>$$g_R(D,A) = g(D,A)/H(A)$$</p>
+<h3 id="CART-算法（gini系数-）"><a href="#CART-算法（gini系数-）" class="headerlink" title="CART 算法（gini系数 ）"></a>CART 算法（gini系数 ）</h3><p>gini系数表示随机选择一个样本被分错的概率。即：基尼指数（基尼不纯度）= 样本被选中的概率 * 样本被分错的概率</p>
+<p>$$Gini =\sum_{i=1} ^Kp_i(1-p_i)$$ = $$1-\sum_{i=1}^Kp_i^2$$</p>
+<h3 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h3><p>预剪枝是指在决策树生成过程中，<strong>对每个节点在划分前先进行估计，若当前节点的划分不能带来决策树泛化性能的提升，则停止划分并将当前节点标记为叶节点。</strong></p>
+<p>后剪枝是先从训练集生成一颗完整的决策树，然后自底向上地对非叶节点进行考察，若将该节点对应的子树完全替换为叶节点能带来决策树繁花性的提升，则将该子树替换为叶节点。</p>
+<p>对比预剪枝和后剪枝，能够发现，后剪枝决策树通常比预剪枝决策树保留了更多的分支，一般情形下，后剪枝决策树的欠拟合风险小，泛华性能往往也要优于预剪枝决策树。但后剪枝过程是在构建完全决策树之后进行的，并且要自底向上的对树中的所有非叶结点进行逐一考察，因此其训练时间开销要比未剪枝决策树和预剪枝决策树都大得多。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>信息熵的最优划分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每列：[&#x27;年龄&#x27;,&#x27;有工作&#x27;,&#x27;有自己的房子&#x27;,&#x27;信贷情况&#x27;,&#x27;是否申请贷款&#x27;]</span></span><br><span class="line">dataSet=np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]])</span><br><span class="line">featList = [<span class="string">&#x27;年龄&#x27;</span>,<span class="string">&#x27;有工作&#x27;</span>,<span class="string">&#x27;有自己的房子&#x27;</span>,<span class="string">&#x27;信贷情况&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算给定标签的经验熵（信息熵）</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    y：使用标签y计算信息熵，，此时传递y是多维数组</span></span><br><span class="line"><span class="string">    计算信息熵需要每种类别出现的概率p，因此传入包含分类信息的标签y</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    entropy：经验熵</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calEntropy</span>(<span class="params">y</span>):</span></span><br><span class="line">    <span class="comment"># 计数器，统计y中所有类别出现的次数</span></span><br><span class="line">    <span class="comment"># 扁平化，将嵌套的多维数组变成一维数组</span></span><br><span class="line">    counter = Counter(y.flatten())</span><br><span class="line">    entropy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num / <span class="built_in">len</span>(y)</span><br><span class="line">        entropy += -p * log(p)</span><br><span class="line">    <span class="keyword">return</span> entropy</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：根据传递进来的特征维度及值，将数据划分为2类</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    X,y,featVec,value：特征向量、标签、特征维度、值</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    返回划分为两类的后的数据</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span>(<span class="params">X, y, featVec, value</span>):</span></span><br><span class="line">    <span class="comment"># 使用维度featVect上的value，将数据划分成左右两部分</span></span><br><span class="line">    <span class="comment"># 得到的布尔向量，传入array中做索引，即可找出满足条件的相应数据（布尔屏蔽）</span></span><br><span class="line">    index_a = (X[:,featVec] &lt;= value)</span><br><span class="line">    index_b = (X[:,featVec] &gt; value)</span><br><span class="line">    <span class="keyword">return</span> X[index_a], X[index_b], y[index_a], y[index_b]</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：寻找最优划分</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    X,y：特征向量、标签</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    返回最优熵，以及在哪个维度、哪个值进行划分</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">try_split</span>(<span class="params">X, y</span>):</span></span><br><span class="line">    <span class="comment"># 搞一个熵的初始值：正无穷</span></span><br><span class="line">    best_entropy = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    best_featVec = -<span class="number">1</span>    <span class="comment"># 特征向量</span></span><br><span class="line">    best_value = -<span class="number">1</span></span><br><span class="line">    <span class="comment"># 遍历每一个特征维度（列）</span></span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> <span class="built_in">range</span>(X.shape[<span class="number">1</span>]):</span><br><span class="line">        <span class="comment"># 然后需要找到每个特征维度上的划分点。</span></span><br><span class="line">        <span class="comment"># 找出该维度上的每个两个样本点的中间值，作为候选划分点。</span></span><br><span class="line">        <span class="comment"># 为了方便寻找候选划分点，可以对该维度上的数值进行排序，</span></span><br><span class="line">        <span class="comment"># argsort函数返回的是数组值从小到大的索引值（不打乱原来的顺序）</span></span><br><span class="line">        sort_index = np.argsort(X[:,featVec])        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(X)):</span><br><span class="line">            <span class="keyword">if</span> X[sort_index[i-<span class="number">1</span>], featVec] != X[sort_index[i], featVec]:</span><br><span class="line">                value = (X[sort_index[i-<span class="number">1</span>], featVec] + X[sort_index[i], featVec]) / <span class="number">2</span></span><br><span class="line">                X_l, X_r, y_l, y_r = split(X, y, featVec, value)</span><br><span class="line">                <span class="comment"># 要求最优划分，需要看在此划分下得到的两个分类数据集的熵之和是否是最小的</span></span><br><span class="line">                entropy = calEntropy(y_l) + calEntropy(y_r)</span><br><span class="line">                <span class="keyword">if</span> entropy &lt; best_entropy:</span><br><span class="line">                    best_entropy, best_featVec, best_value = entropy, featVec, value</span><br><span class="line">    <span class="keyword">return</span> best_entropy, best_featVec, best_value      </span><br><span class="line">    </span><br><span class="line">best_entropy, best_featVec, best_value = try_split(X, y)</span><br><span class="line">print(<span class="string">&quot;最优熵：&quot;</span>, best_featVec)</span><br><span class="line">print(<span class="string">&quot;在哪个维度熵进行划分：&quot;</span>, best_featVec)</span><br><span class="line">print(<span class="string">&quot;在哪个值上进行划分：&quot;</span>, best_value)</span><br></pre></td></tr></table></figure>
+<p>信息增益&amp;信息增益率最优划分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from collections import Counter</span><br><span class="line">from math import log</span><br><span class="line"></span><br><span class="line"># 每列：[&#39;年龄&#39;,&#39;有工作&#39;,&#39;有自己的房子&#39;,&#39;信贷情况&#39;,&#39;是否申请贷款&#39;]，其中&#39;是否申请贷款&#39;是label</span><br><span class="line">dataSet&#x3D;np.array([[0, 0, 0, 0, 0],</span><br><span class="line">                  [0, 0, 0, 1, 0],</span><br><span class="line">                  [0, 1, 0, 1, 1],</span><br><span class="line">                  [0, 1, 1, 0, 1],</span><br><span class="line">                  [0, 0, 0, 0, 0],</span><br><span class="line">                  [1, 0, 0, 0, 0],</span><br><span class="line">                  [1, 0, 0, 1, 0],</span><br><span class="line">                  [1, 1, 1, 1, 1],</span><br><span class="line">                  [1, 0, 1, 2, 1],</span><br><span class="line">                  [1, 0, 1, 2, 1],</span><br><span class="line">                  [2, 0, 1, 2, 1],</span><br><span class="line">                  [2, 0, 1, 1, 1],</span><br><span class="line">                  [2, 1, 0, 1, 1],</span><br><span class="line">                  [2, 1, 0, 2, 1],</span><br><span class="line">                  [2, 0, 0, 0, 0]])</span><br><span class="line">X &#x3D; dataSet[:,:4]</span><br><span class="line">y &#x3D; dataSet[:,-1:]</span><br><span class="line">strs &#x3D; [&#39;年龄&#39;,&#39;有工作&#39;,&#39;有自己的房子&#39;,&#39;信贷情况&#39;,&#39;是否申请贷款&#39;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明：计算经验熵</span><br><span class="line">Parameters：</span><br><span class="line">    dataSet：样本数据集D</span><br><span class="line">Returns：</span><br><span class="line">    entory：经验熵</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def calEntropy(dataSet):</span><br><span class="line">    #返回数据集行数</span><br><span class="line">    numEntries&#x3D;len(dataSet)</span><br><span class="line">    #保存每个标签（label）出现次数的字典：&lt;label:出现次数&gt;</span><br><span class="line">    labelCounts&#x3D;&#123;&#125;</span><br><span class="line">    #对每组特征向量进行统计</span><br><span class="line">    for featVec in dataSet:</span><br><span class="line">        #提取标签信息</span><br><span class="line">        currentLabel&#x3D;featVec[-1]</span><br><span class="line">        #如果标签没有放入统计次数的字典，添加进去</span><br><span class="line">        if currentLabel not in labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel]&#x3D;0</span><br><span class="line">        #label计数</span><br><span class="line">        labelCounts[currentLabel]+&#x3D;1</span><br><span class="line">    </span><br><span class="line">    entory&#x3D;0.0</span><br><span class="line">    #计算经验熵</span><br><span class="line">    for key in labelCounts:</span><br><span class="line">        #选择该标签的概率</span><br><span class="line">        prob&#x3D;float(labelCounts[key])&#x2F;numEntries </span><br><span class="line">        #利用公式计算</span><br><span class="line">        entory-&#x3D;prob*log(prob,2)</span><br><span class="line">    return entory </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明：得到当前特征条件下的小类的所有样本集合（即不包含当前特征的特征样本集）</span><br><span class="line">Parameters：</span><br><span class="line">    dataSet：样本数据集D</span><br><span class="line">    curtFeatIndex：当前用来划分数据集的特征A的位置</span><br><span class="line">    categories：特征A所有可能分类的集合</span><br><span class="line">Returns：</span><br><span class="line">    otherFeatSets：不包含当前特征的特征样本集</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def currentConditionSet(dataSet, curtFeatIndex, categroy):</span><br><span class="line">    otherFeatSets &#x3D; []</span><br><span class="line">    # 对于数据集中的所有特征向量，抛去当前特征后拼接好的集合</span><br><span class="line">    for featVec in dataSet:</span><br><span class="line">        if featVec[curtFeatIndex] &#x3D;&#x3D; categroy:</span><br><span class="line">            otherFeatSet &#x3D; np.append(featVec[:curtFeatIndex],featVec[curtFeatIndex+1:])</span><br><span class="line">            otherFeatSets.append(otherFeatSet) </span><br><span class="line">    return otherFeatSets</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明：在选择当前特征的条件下，计算熵，即条件熵</span><br><span class="line">Parameters：</span><br><span class="line">    dataSet：样本数据集D</span><br><span class="line">    curtFeatIndex：当前用来划分数据集的特征A的位置</span><br><span class="line">    categories：特征A所有可能分类的集合</span><br><span class="line">Returns：</span><br><span class="line">    conditionalEnt：返回条件熵</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def calConditionalEnt(dataSet, curtFeatIndex, categories):</span><br><span class="line">    conditionalEnt &#x3D; 0</span><br><span class="line">    # 对于每一个分类，计算选择当前特征的条件下条件熵</span><br><span class="line">    # 比如在选择“年龄”这一特征下，共有“老中青”三个小分类</span><br><span class="line">    for categroy in categories:</span><br><span class="line">        # 得到当前特征条件下的小类的所有样本集合，即不包含当前特征的特征样本集</span><br><span class="line">        # 如得到在选择“青年”这个小类下一共有5个样本，且不包含“年龄”这一特征</span><br><span class="line">        cdtSetCategroy &#x3D; currentConditionSet(dataSet, curtFeatIndex, categroy)</span><br><span class="line">        # 计算当前特征条件下的小分类，占总分类的比例</span><br><span class="line">        prob &#x3D; len(cdtSetCategroy) &#x2F; float(dataSet.shape[0])</span><br><span class="line">        # 累加得到条件熵</span><br><span class="line">        conditionalEnt +&#x3D; prob * calEntropy(cdtSetCategroy)</span><br><span class="line">    return conditionalEnt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明：计算信息增益</span><br><span class="line">Parameters：</span><br><span class="line">    baseEntropy：划分样本集合D的熵是为H(D)，即基本熵</span><br><span class="line">    dataSet：样本数据集D</span><br><span class="line">    curtFeatIndex：当前用来划分数据集的特征A的位置</span><br><span class="line">Returns：</span><br><span class="line">    infoGain：信息增益值</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def calInfoGain(baseEntropy,dataSet,curtFeatIndex):</span><br><span class="line">    </span><br><span class="line">    conditionalEnt &#x3D; 0.0</span><br><span class="line">    </span><br><span class="line">    # categories是所有特征向量中当前特征的对应值的set集合（去重复）</span><br><span class="line">    # 相当于该特征一共有几种分类，如“年龄”这一特征，分为“老中青”三类</span><br><span class="line">    categories &#x3D; set(dataSet[:,curtFeatIndex])</span><br><span class="line">    </span><br><span class="line">    # 计算划分后的数据子集（给定特征A的情况下，数据集D）的条件熵（经验条件熵）H(D|A)</span><br><span class="line">    conditionalEnt &#x3D; calConditionalEnt(dataSet,curtFeatIndex,categories)</span><br><span class="line">    </span><br><span class="line">    # 计算信息增益：g(D,A)&#x3D;H(D)−H(D|A)</span><br><span class="line">    infoGain &#x3D; baseEntropy - conditionalEnt</span><br><span class="line">    </span><br><span class="line">    #打印每个特征的信息增益</span><br><span class="line">    print(&quot;第%d个特征的增益为%.3f&quot; % (curtFeatIndex, infoGain))</span><br><span class="line">    return infoGain</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明：寻找最优划分</span><br><span class="line">Parameters：</span><br><span class="line">    dataSet：数据集</span><br><span class="line">Returns：</span><br><span class="line">    打印最优划分结果</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def optimalPartition(dataSet):</span><br><span class="line">    bestInfoGain &#x3D; -1   # 最佳信息增益初始值</span><br><span class="line">    bestFeatVec &#x3D; -1    # 最佳划分的特征向量</span><br><span class="line">    # 划分前样本集合D的熵H(D)，即基本熵</span><br><span class="line">    baseEntropy &#x3D; calEntropy(dataSet)</span><br><span class="line">    </span><br><span class="line">    # 遍历每一个特征维度（列），得到基于当前特征划分的信息增益</span><br><span class="line">    for curtFeatIndex in range(dataSet.shape[1]-1):</span><br><span class="line">        </span><br><span class="line">        # 计算信息增益</span><br><span class="line">        infoGain &#x3D; calInfoGain(baseEntropy, dataSet, curtFeatIndex)</span><br><span class="line">        </span><br><span class="line">        # 选取最优信息增益的划分</span><br><span class="line">        if (infoGain &gt; bestInfoGain):</span><br><span class="line">            #更新信息增益，找到最大的信息增益</span><br><span class="line">            bestInfoGain &#x3D; infoGain</span><br><span class="line">            #记录信息增益最大的特征的索引值</span><br><span class="line">            bestFeatVec &#x3D; curtFeatIndex</span><br><span class="line">    </span><br><span class="line">    print(&quot;最佳的划分为第%d个特征，是”%s“，信息增益为%.3f&quot; % (bestFeatVec,featList[bestFeatVec],bestInfoGain))</span><br><span class="line">    return bestFeatVec     </span><br><span class="line"></span><br><span class="line">optimalPartition(dataSet)</span><br></pre></td></tr></table></figure>
+<p>信息增益率最优划分实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算惩罚参数，信息增益g(D,A)与训练数据集D关于特征A的值的熵HA(D)之比</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    dataSet：样本数据集D</span></span><br><span class="line"><span class="string">    curtFeatIndex：当前用来划分数据集的特征A的位置</span></span><br><span class="line"><span class="string">    categories：特征A所有可能分类的集合</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    conditionalEnt：惩罚参数</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calPenaltyPara</span>(<span class="params">dataSet, curtFeatIndex, categories</span>):</span></span><br><span class="line">    penaltyItem = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 对于每一个分类，计算选择当前特征的条件下条件熵</span></span><br><span class="line">    <span class="comment"># 比如在选择“年龄”这一特征下，共有“老中青”三个小分类</span></span><br><span class="line">    <span class="keyword">for</span> categroy <span class="keyword">in</span> categories:</span><br><span class="line">        <span class="comment"># 得到当前特征条件下的小类的所有样本集合，即不包含当前特征的特征样本集</span></span><br><span class="line">        <span class="comment"># 如得到在选择“青年”这个小类下一共有5个样本，且不包含“年龄”这一特征</span></span><br><span class="line">        cdtSetCategroy = currentConditionSet(dataSet, curtFeatIndex, categroy)</span><br><span class="line">        <span class="comment"># 计算当前特征条件下的小分类，占总分类的比例</span></span><br><span class="line">        prob = <span class="built_in">len</span>(cdtSetCategroy) / <span class="built_in">float</span>(dataSet.shape[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># 累加得到惩罚项</span></span><br><span class="line">        penaltyItem += -prob * log(prob,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> penaltyItem</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：计算信息增益率（惩罚参数 * 信息增益）</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    baseEntropy：划分样本集合D的熵是为H(D)，即基本熵</span></span><br><span class="line"><span class="string">    dataSet：样本数据集D</span></span><br><span class="line"><span class="string">    curtFeatIndex：当前用来划分数据集的特征A的位置</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    infoGain：信息增益值</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calInfoGainRate</span>(<span class="params">baseEntropy,dataSet,curtFeatIndex</span>):</span></span><br><span class="line">    infoGainRate = <span class="number">0.0</span></span><br><span class="line">    <span class="comment"># 计算信息增益</span></span><br><span class="line">    infoGain = calInfoGain(baseEntropy,dataSet,curtFeatIndex)</span><br><span class="line">    <span class="comment"># 得到该特征的所有分类</span></span><br><span class="line">    categories = <span class="built_in">set</span>(dataSet[:,curtFeatIndex])</span><br><span class="line">    <span class="comment"># 计算惩罚项</span></span><br><span class="line">    penaltyItem = calPenaltyPara(dataSet, curtFeatIndex, categories)</span><br><span class="line">    <span class="comment"># 计算信息增益率</span></span><br><span class="line">    infoGainRatio = infoGain / penaltyItem</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#打印每个特征的信息增益率</span></span><br><span class="line">    print(<span class="string">&quot;第%d个特征的增益率为%.3f&quot;</span> % (curtFeatIndex, infoGainRatio))</span><br><span class="line">    <span class="keyword">return</span> infoGainRatio</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">函数说明：寻找最优划分</span></span><br><span class="line"><span class="string">Parameters：</span></span><br><span class="line"><span class="string">    dataSet：数据集</span></span><br><span class="line"><span class="string">Returns：</span></span><br><span class="line"><span class="string">    打印最优划分结果</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimalPartition</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    bestInfoGainRatio = <span class="number">0.0</span>   <span class="comment"># 最佳信息增益率初始值</span></span><br><span class="line">    bestFeatVec = -<span class="number">1</span>    <span class="comment"># 最佳划分的特征向量</span></span><br><span class="line">    <span class="comment"># 划分前样本集合D的熵H(D)，即基本熵</span></span><br><span class="line">    baseEntropy = calEntropy(dataSet)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 遍历每一个特征维度（列），得到基于当前特征划分的信息增益</span></span><br><span class="line">    <span class="keyword">for</span> curtFeatIndex <span class="keyword">in</span> <span class="built_in">range</span>(dataSet.shape[<span class="number">1</span>]-<span class="number">1</span>):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># categories是所有特征向量中当前特征的对应值的set集合（去重复）</span></span><br><span class="line">        <span class="comment"># 相当于该特征一共有几种分类，如“年龄”这一特征，分为“老中青”三类</span></span><br><span class="line">        <span class="comment">#categories = set(dataSet[:,curtFeatIndex])</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算信息增益率</span></span><br><span class="line">        infoGainRatio = calInfoGainRate(baseEntropy, dataSet, curtFeatIndex)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 选取最优信息增益率的划分</span></span><br><span class="line">        <span class="keyword">if</span> (infoGainRatio &gt; bestInfoGainRatio):</span><br><span class="line">            <span class="comment">#更新信息增益率，找到最大的信息增益率</span></span><br><span class="line">            bestInfoGainRatio = infoGainRatio</span><br><span class="line">            <span class="comment">#记录信息增益率最大的特征的索引值</span></span><br><span class="line">            bestFeatVec = curtFeatIndex</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">&quot;最佳的划分为第%d个特征，是”%s“，信息增益率为%.3f&quot;</span> % (bestFeatVec,strs[bestFeatVec],bestInfoGainRatio))</span><br><span class="line">    <span class="keyword">return</span>     </span><br><span class="line"></span><br><span class="line">optimalPartition(dataSet)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/14/shuiliantan.github.io/Algorithm/LogisticRegression_/priciple/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/28/shuiliantan.github.io/Algorithm/k-means/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A"><span class="nav-number">2.</span> <span class="nav-text">原理解释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID3%E7%AE%97%E6%B3%95%EF%BC%88%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">ID3算法（信息增益）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C4-5%E7%AE%97%E6%B3%95%EF%BC%88%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E7%8E%87%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">C4.5算法（信息增益率）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CART-%E7%AE%97%E6%B3%95%EF%BC%88gini%E7%B3%BB%E6%95%B0-%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">CART 算法（gini系数 ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%AA%E6%9E%9D"><span class="nav-number">6.</span> <span class="nav-text">剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">7.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
